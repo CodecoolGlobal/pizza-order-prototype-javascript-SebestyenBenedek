@@ -143,6 +143,102 @@
 								},
 			"price": 27930,
 			"colors": [4]
+		},
+		{
+			"id": 13,
+			"name": "Fossil ES3284",
+			"specifications": {
+				"type": "analog",
+				"strap material": "alloy steel",
+				"iswaterproof": true,
+				"sex": "women"
+								},
+			"price": 30990,
+			"colors": [9]
+		},
+		{
+			"id": 14,
+			"name": "Citizen EM0893-87Y",
+			"specifications": {
+				"type": "analog",
+				"strap material": "alloy steel",
+				"iswaterproof": false,
+				"sex": "women"
+								},
+			"price": 67900,
+			"colors": [3]
+		},
+		{
+			"id": 15,
+			"name": "Michael Kors MK7118",
+			"specifications": {
+				"type": "analog",
+				"strap material": "stainless steel",
+				"iswaterproof": true,
+				"sex": "women"
+								},
+			"price": 32280,
+			"colors": [3]
+		},
+		{
+			"id": 16,
+			"name": "Citizen EM0335-51D",
+			"specifications": {
+				"type": "analog",
+				"strap material": "alloy steel",
+				"iswaterproof": false,
+				"sex": "women"
+								},
+			"price": 83505,
+			"colors": [3, 5]
+		},
+		{
+			"id": 17,
+			"name": "Zeppelin 8680",
+			"specifications": {
+				"type": "analog",
+				"strap material": "leather",
+				"iswaterproof": true,
+				"sex": "men"
+								},
+			"price": 102440,
+			"colors": [1, 4, 5, 7]
+		},
+		{
+			"id": 18,
+			"name": "Seiko SNE527P1",
+			"specifications": {
+				"type": "analog",
+				"strap material": "stainless steel",
+				"iswaterproof": true,
+				"sex": "men"
+								},
+			"price": 90240,
+			"colors": [1, 5]
+		},
+		{
+			"id": 19,
+			"name": "Seiko SNZG09K1",
+			"specifications": {
+				"type": "analog",
+				"strap material": "fabric",
+				"iswaterproof": true,
+				"sex": "men"
+								},
+			"price": 65987,
+			"colors": [7]
+		},
+		{
+			"id": 20,
+			"name": "Citizen NJ0150-81X",
+			"specifications": {
+				"type": "analog",
+				"strap material": "stainless steel",
+				"iswaterproof": true,
+				"sex": "men"
+								},
+			"price": 104405,
+			"colors": [5, 7]
 		}
 	]
 }
