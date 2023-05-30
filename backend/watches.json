@@ -1,0 +1,148 @@
+{
+	"watches": [
+		{
+			"id": 1,
+			"name": "Seiko SNK809K1",
+			"specifications": {
+				"type": "analog",
+				"strap material": "stainless steel",
+				"iswaterproof": true,
+				"sex": "men"
+								},
+			"price": 40709,
+			"colors": [1]
+		},
+		{
+			"id": 2,
+			"name": "Casio MTP-1302PD-1A1VEF",
+			"specifications": {
+				"type": "analog",
+				"strap material": "stainless steel",
+				"iswaterproof": false,
+				"sex": "men"
+								},
+			"price": 21015,
+			"colors": [1, 2, 3, 4, 5]
+		},
+		{
+			"id": 3,
+			"name": "Casio GA-2100-1A1ER",
+			"specifications": {
+				"type": "analog",
+				"strap material": "silicone",
+				"iswaterproof": true,
+				"sex": "men"
+								},
+			"price": 35520,
+			"colors": [1, 2, 5, 6, 7]
+		},
+		{
+			"id": 4,
+			"name": "Seiko SRPD51K1",
+			"specifications": {
+				"type": "analog",
+				"strap material": "steel",
+				"iswaterproof": true,
+				"sex": "men"
+								},
+			"price": 97325,
+			"colors": [2]
+		},
+		{
+			"id": 5,
+			"name": "Casio A-168WG-9EF",
+			"specifications": {
+				"type": "digital",
+				"strap material": "stainless steel",
+				"iswaterproof": false,
+				"sex": "men"
+								},
+			"price": 23390,
+			"colors": [3]
+		},
+		{
+			"id": 6,
+			"name": "Casio GBD-200-9ER",
+			"specifications": {
+				"type": "digital",
+				"strap material": "rubber",
+				"iswaterproof": true,
+				"sex": "men"
+								},
+			"price": 50392,
+			"colors": [8]
+		},
+		{
+			"id": 7,
+			"name": "Pulsar PH8489X1",
+			"specifications": {
+				"type": "analog",
+				"strap material": "alloy steel",
+				"iswaterproof": true,
+				"sex": "women"
+								},
+			"price": 40709,
+			"colors": [4, 5]
+		},
+		{
+			"id": 8,
+			"name": "Tommy Hilfiger 1782163",
+			"specifications": {
+				"type": "analog",
+				"strap material": "stainless steel",
+				"iswaterproof": false,
+				"sex": "women"
+								},
+			"price": 46070,
+			"colors": [4, 5]
+		},
+		{
+			"id": 9,
+			"name": "Michael Kors MK6357",
+			"specifications": {
+				"type": "analog",
+				"strap material": "alloy steel",
+				"iswaterproof": false,
+				"sex": "women"
+								},
+			"price": 38500,
+			"colors": [9]
+		},
+		{
+			"id": 10,
+			"name": "Giorgio Armani Emporio Armani Classic AR1907",
+			"specifications": {
+				"type": "analog",
+				"strap material": "stainless steel",
+				"iswaterproof": true,
+				"sex": "women"
+								},
+			"price": 44358,
+			"colors": [3]
+		},
+		{
+			"id": 11,
+			"name": "Michael Kors MK5865",
+			"specifications": {
+				"type": "analog",
+				"strap material": "alloy steel",
+				"iswaterproof": true,
+				"sex": "women"
+								},
+			"price": 31265,
+			"colors": [9]
+		},
+		{
+			"id": 12,
+			"name": "Ice Watch 015744",
+			"specifications": {
+				"type": "analog",
+				"strap material": "plastic",
+				"iswaterproof": true,
+				"sex": "women"
+								},
+			"price": 27930,
+			"colors": [4]
+		}
+	]
+}
