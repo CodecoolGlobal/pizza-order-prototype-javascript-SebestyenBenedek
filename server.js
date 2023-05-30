@@ -14,10 +14,6 @@ app.use(express.static('frontend'));
 
 const port = 9001;
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(`${__dirname}/../frontend/index.html`));
-});
-
 app.get('/api/watches', async (req, res) => {
   const fileData = JSON.parse(await fileReaderAsync(watchFilePath));
   const watches = fileData.watches;
