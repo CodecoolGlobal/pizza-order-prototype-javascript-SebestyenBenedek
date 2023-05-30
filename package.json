@@ -6,7 +6,7 @@
     "nodemon": "^2.0.22"
   },
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon backend/server.js"
   },
   "name": "pizza-order-prototype-javascript-sebestyenbenedek",
   "description": "No starter code is provided. Start from scratch!",
