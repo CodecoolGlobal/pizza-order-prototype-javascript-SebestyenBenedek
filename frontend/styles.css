@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+}
+
+nav {
+  border-bottom: 1px solid lightgray;
+  padding: 2vh;
+  
+}
+
+aside {
+  
+  padding: 2vh;
+  width: 20vw;
+}
