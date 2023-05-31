@@ -18,3 +18,13 @@ function watchFilteringByColor(watches){
     watches.filter((watch) => watch)
 } */
 
+function main (){
+  getJSONData();
+}
+
+async function getJSONData(){
+  const response = await fetch('http://127.0.0.1:9001/api/watches');
+  const jsonData = await response.json();
+  console.log(jsonData);
+}
+window.addEventListener('load', main);
