@@ -9,7 +9,7 @@
 				"iswaterproof": true,
 				"sex": "men"
 								},
-			"price": 40709,
+			"price": 40.709,
 			"colors": [1],
 			"image": "./images/Seiko SNK809K1.jpg"
 		},
@@ -22,7 +22,7 @@
 				"iswaterproof": false,
 				"sex": "men"
 								},
-			"price": 21015,
+			"price": 21.015,
 			"colors": [1, 2, 3, 4, 5],
 			"image": "./images/Casio MTP-1302PD-1A1VEF.jpg"
 		},
@@ -35,7 +35,7 @@
 				"iswaterproof": true,
 				"sex": "men"
 								},
-			"price": 35520,
+			"price": 35.520,
 			"colors": [1, 2, 5, 6, 7],
 			"image": "./images/Casio GA-2100-1A1ER.jpg"
 		},
@@ -48,7 +48,7 @@
 				"iswaterproof": true,
 				"sex": "men"
 								},
-			"price": 97325,
+			"price": 97.325,
 			"colors": [2],
 			"image": "./images/Seiko SRPD51K1.jpg"
 		},
@@ -61,7 +61,7 @@
 				"iswaterproof": false,
 				"sex": "men"
 								},
-			"price": 23390,
+			"price": 23.390,
 			"colors": [3],
 			"image": "./images/Casio A-168WG-9EF.jpg"
 		},
@@ -74,7 +74,7 @@
 				"iswaterproof": true,
 				"sex": "men"
 								},
-			"price": 50392,
+			"price": 50.392,
 			"colors": [8],
 			"image": "./images/Casio GBD-200-9ER.jpg"
 		},
@@ -87,7 +87,7 @@
 				"iswaterproof": true,
 				"sex": "women"
 								},
-			"price": 40709,
+			"price": 40.709,
 			"colors": [4, 5],
 			"image": "./images/Pulsar PH8489X1.jpg"
 		},
@@ -100,7 +100,7 @@
 				"iswaterproof": false,
 				"sex": "women"
 								},
-			"price": 46070,
+			"price": 46.070,
 			"colors": [4, 5],
 			"image": "./images/Tommy Hilfiger 1782163.jpg"
 		},
@@ -113,7 +113,7 @@
 				"iswaterproof": false,
 				"sex": "women"
 								},
-			"price": 38500,
+			"price": 38.500,
 			"colors": [9],
 			"image": "./images/Michael Kors MK6357.jpg"
 		},
@@ -126,7 +126,7 @@
 				"iswaterproof": true,
 				"sex": "women"
 								},
-			"price": 44358,
+			"price": 44.358,
 			"colors": [3],
 			"image": "./images/Giorgio Armani Emporio Armani Classic AR1907.jpg"
 		},
@@ -139,7 +139,7 @@
 				"iswaterproof": true,
 				"sex": "women"
 								},
-			"price": 31265,
+			"price": 31.265,
 			"colors": [9],
 			"image": "./images/Michael Kors MK5865.jpg"
 		},
@@ -152,7 +152,7 @@
 				"iswaterproof": true,
 				"sex": "women"
 								},
-			"price": 27930,
+			"price": 27.930,
 			"colors": [4],
 			"image": "./images/Ice Watch 015744.jpg"
 		},
@@ -165,7 +165,7 @@
 				"iswaterproof": true,
 				"sex": "women"
 								},
-			"price": 30990,
+			"price": 30.990,
 			"colors": [9],
 			"image": "./images/Fossil ES3284.jpg"
 		},
@@ -178,7 +178,7 @@
 				"iswaterproof": false,
 				"sex": "women"
 								},
-			"price": 67900,
+			"price": 67.900,
 			"colors": [3],
 			"image": "./images/Citizen EM0893-87Y.jpg"
 		},
@@ -191,7 +191,7 @@
 				"iswaterproof": true,
 				"sex": "women"
 								},
-			"price": 32280,
+			"price": 32.280,
 			"colors": [3],
 			"image": "./images/Michael Kors MK7118.jpg"
 		},
@@ -204,7 +204,7 @@
 				"iswaterproof": false,
 				"sex": "women"
 								},
-			"price": 83505,
+			"price": 83.505,
 			"colors": [3, 5],
 			"image": "./images/Citizen EM0335-51D.jpg"
 		},
@@ -217,7 +217,7 @@
 				"iswaterproof": true,
 				"sex": "men"
 								},
-			"price": 102440,
+			"price": 102.440,
 			"colors": [1, 4, 5, 7],
 			"image": "./images/Zeppelin 8680.jpg"
 		},
@@ -230,7 +230,7 @@
 				"iswaterproof": true,
 				"sex": "men"
 								},
-			"price": 90240,
+			"price": 90.240,
 			"colors": [1, 5],
 			"image": "./images/Seiko SNE527P1.jpg"
 		},
@@ -243,7 +243,7 @@
 				"iswaterproof": true,
 				"sex": "men"
 								},
-			"price": 65987,
+			"price": 65.987,
 			"colors": [7],
 			"image": "./images/Seiko SNZG09K1.jpg"
 		},
@@ -256,7 +256,7 @@
 				"iswaterproof": true,
 				"sex": "men"
 								},
-			"price": 104405,
+			"price": 104.405,
 			"colors": [5, 7],
 			"image": "./images/Citizen NJ0150-81X.jpg"
 		}
