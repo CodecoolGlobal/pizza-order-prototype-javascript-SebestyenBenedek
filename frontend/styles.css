@@ -24,3 +24,6 @@ aside {
   display: flex;
   justify-content: center;
 }
+.card{
+  width: 20vw;
+}
