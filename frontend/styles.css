@@ -17,7 +17,11 @@ aside {
 #content {
   padding: 2vh;
   width: 80vw;
-
+  display: flex;
+  align-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 #root{
@@ -26,4 +30,5 @@ aside {
 }
 .card{
   width: 20vw;
+  margin: 2vw;
 }
