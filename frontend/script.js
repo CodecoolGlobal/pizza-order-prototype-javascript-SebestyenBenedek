@@ -1,4 +1,4 @@
-const checkedColorValues = [];
+const checkedColorIDs = [];
 const checkedColorBoxes = document.querySelectorAll('.checkbox');
 console.log(checkedColorBoxes);
 
@@ -9,28 +9,29 @@ function checkBox(datas) {
       if (!checkbox.classList.contains('checked')) {
         checkbox.classList.add('checked');
         const colorId = datas.find((data) => data.name === event.target.value);
-        checkedColorValues.push(colorId.id);
+        checkedColorIDs.push(colorId.id);
       } else if (checkbox.classList.contains('checked')) {
         checkbox.classList.remove('checked');
-        const colorIndex = checkedColorValues.findIndex((color) => color === event.target.value);
-        checkedColorValues.splice(colorIndex, 1);
+        const colorIndex = checkedColorIDs.findIndex((color) => color === event.target.value);
+        checkedColorIDs.splice(colorIndex, 1);
       }
-      console.log(checkedColorValues);
+      console.log(checkedColorIDs);
     });
   });
 }
 
-/* let FILTERED_WATCHES = [];
-
-function watchFilteringByColor(watches){
-    watches.filter((watch) => watch)
-} */
+function watchFilteringByColor(data){
+  for (const colorID of checkedColorIDs) {
+    data.filter((watch) => watch.id === colorID);
+  }
+}
 
 async function main (){
   const watchJSON = await getWatchData();
   displayWatches(watchJSON);
   const colorJSON = await getColorData();
   checkBox(colorJSON);
+  console.log(watchFilteringByColor(watchJSON));
 }
 
 async function getWatchData(){
