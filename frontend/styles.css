@@ -5,7 +5,7 @@ body {
 nav {
   border-bottom: 1px solid lightgray;
   padding: 2vh;
-  height: 10vh;
+  height: 15vh;
   position: fixed;
   width: 100vw;
   z-index: 5;
@@ -17,7 +17,7 @@ aside {
   padding: 2vh;
   width: 20vw;
   position: fixed;
-  top: 10vh;
+  top: 15vh;
   bottom: 0;
   overflow-y: auto;
 }
@@ -31,7 +31,7 @@ aside {
   flex-wrap: wrap;
   justify-content: center;
   position: absolute;
-  top: 10vh;
+  top: 15vh;
   right: 0;
   overflow-y: hidden;
   z-index: 3;
@@ -47,8 +47,8 @@ aside {
 }
 
 #cart-content .card {
-  width: 30vw;
-  margin: 2vw;
+  width: 33vw;
+  margin: 2vw 0;
 }
 
 #items-in-cart {
