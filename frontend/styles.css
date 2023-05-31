@@ -19,7 +19,7 @@ aside {
   position: fixed;
   top: 10vh;
   bottom: 0;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 #content {
@@ -33,7 +33,7 @@ aside {
   position: absolute;
   top: 10vh;
   right: 0;
-  overflow-y:hidden;
+  overflow-y: hidden;
   z-index: 3;
 }
 
