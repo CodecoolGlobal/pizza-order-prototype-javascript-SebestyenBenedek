@@ -1,14 +1,24 @@
-const arr = document.querySelectorAll('.checkbox');
-console.log(arr);
-arr.forEach((checkbox) => {
-  checkbox.addEventListener ('change', function() {
-    if (!checkbox.classList.contains('checked')) {
-      checkbox.classList.add('checked');
-    } else {
-      checkbox.classList.remove('checked');
-    }
+const checkedColorValues = [];
+const checkedColorBoxes = document.querySelectorAll('.checkbox');
+console.log(checkedColorBoxes);
+
+
+function checkBox(datas) {
+  checkedColorBoxes.forEach((checkbox) => {
+    checkbox.addEventListener('change', function (event) {
+      if (!checkbox.classList.contains('checked')) {
+        checkbox.classList.add('checked');
+        const colorId = datas.find((data) => data.name === event.target.value);
+        checkedColorValues.push(colorId.id);
+      } else if (checkbox.classList.contains('checked')) {
+        checkbox.classList.remove('checked');
+        const colorIndex = checkedColorValues.findIndex((color) => color === event.target.value);
+        checkedColorValues.splice(colorIndex, 1);
+      }
+      console.log(checkedColorValues);
+    });
   });
-});
+}
 
 /* let FILTERED_WATCHES = [];
 
@@ -20,19 +30,20 @@ async function main (){
   const watchJSON = await getWatchData();
   displayWatches(watchJSON);
   const colorJSON = await getColorData();
+  checkBox(colorJSON);
 }
 
 async function getWatchData(){
   const response = await fetch('http://127.0.0.1:9001/api/watches');
   const jsonData = await response.json();
-  console.log(jsonData);
+  /* console.log(jsonData); */
   return jsonData;
 }
 
 async function getColorData(){
   const response = await fetch('http://127.0.0.1:9001/api/colors');
   const jsonData = await response.json();
-  console.log(jsonData);
+  /* console.log(jsonData); */
   return jsonData;
 }
 function displayWatches(data){
