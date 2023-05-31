@@ -39,7 +39,7 @@ function displayWatches(data){
       <div class="card">
             <div class="card-image">
               <figure class="image is-4by3">
-                <img src="https://placehold.jp/150x150.png" alt="Placeholder image">
+                <img src="${watch.image}" alt="Placeholder image">
               </figure>
             </div>
             <div class="card-content">
