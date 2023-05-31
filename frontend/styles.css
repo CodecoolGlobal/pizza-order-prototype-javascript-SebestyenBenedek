@@ -45,3 +45,9 @@ aside {
   width: 20vw;
   margin: 2vw;
 }
+
+figure, figure img {
+  width: 50%;
+  height: auto;
+  margin: auto;
+}
