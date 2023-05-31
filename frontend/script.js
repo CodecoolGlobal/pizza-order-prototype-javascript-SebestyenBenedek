@@ -23,20 +23,13 @@ function checkBox(datas) {
 function watchFilteringByColor(data){
   const filtered = [];
   for (const colorID of checkedColorIDs) {
-/*     const xdc = data.filter((watch) => watch.colors.includes(colorID)); */
-    for(const watch of data){
-      if(watch.colors.includes(colorID)) filtered.push(watch);
+    for (const watch of data){
+      if (watch.colors.includes(colorID) && !filtered.includes(watch)) filtered.push(watch);
     }
   }
   console.log(filtered);
   return filtered;
 }
-
-
-const CART = [];
-
-
-
 
 async function main (){
   const watchJSON = await getWatchData();
@@ -44,7 +37,7 @@ async function main (){
   const colorJSON = await getColorData();
   checkBox(colorJSON);
   filterEventListener(watchJSON);
-  //addEventListenerToInput();
+  homeButton();
 }
 
 async function getWatchData(){
@@ -86,28 +79,42 @@ function displayFilteredWatches(data){
             <div class="media">
               <div class="media-content">
                 <p class="title is-4">${watch.name}</p>
-                <p class="subtitle is-6">${watch.price} Ft</p>
+                <p class="subtitle is-6 has-text-primary-dark">${watch.price} Ft</p>
               </div>
             </div>
         
             <div class="content">
               <ul>
                   <li>
-                  Type: ${watch.specifications['type']}
+                    <span>Type:</span>
+                    <span class="has-text-primary-dark">${watch.specifications.type}</span>
                   </li>
                   <li>
-                  Strap material: ${watch.specifications['strap material']} 
+                    <span>Strap material:</span>
+                    <span class="has-text-primary-dark">${watch.specifications['strap material']}</span>
                   </li>
                   <li>
-                  Waterproof: ${watch.specifications.iswaterproof ? 'yes' : 'no'} 
+                    <span>Waterproof:</span>
+                    <span class="has-text-primary-dark">${watch.specifications.iswaterproof ? 'yes' : 'no'}</span>
                   </li>
                   <li>
-                  Sex: ${watch.specifications.sex}
+                    <span>Sex:</span>
+                    <span class="has-text-primary-dark">${watch.specifications.sex}</span>
                   </li>
               </ul>
               <br>
-              <input class="input is-rounded" id="amount" max="9" min="0" placeholder="amount" type="number">
-              <button id="${watch.id} "class="button is-rounded">Add to cart</button>
+              <div class="level">
+                  <div class="level-left" style="width: 50%;">
+                    <div class="level-item" style="width: 90%;">
+                      <input class="input is-rounded" id="amount" max="9" min="0" placeholder="amount" type="number">
+                    </div>
+                  </div>
+                  <div class="level-right" style="width: 50%;">
+                    <div class="level-item" style="width: 90%;">
+                      <button id="${watch.id} "class="button is-rounded is-primary">Add to cart</button>
+                    </div>
+                  </div>
+                </div>
             </div>
           </div>
         </div>
@@ -121,6 +128,7 @@ function displayWatches(data){
   const contentElement = document.querySelector('#content');
 
   watchButton.addEventListener('click', ()=>{
+    contentElement.innerHTML = '';
     data.forEach((watch) => {
       contentElement.insertAdjacentHTML('beforeend', `
         <div id='watch-content'>
@@ -134,28 +142,42 @@ function displayWatches(data){
               <div class="media">
                 <div class="media-content">
                   <p class="title is-4">${watch.name}</p>
-                  <p class="subtitle is-6">${watch.price} Ft</p>
+                  <p class="subtitle is-6 has-text-primary-dark">${watch.price} Ft</p>
                 </div>
               </div>
           
               <div class="content">
                 <ul>
                     <li>
-                    Type: ${watch.specifications.type}
+                      <span>Type:</span>
+                      <span class="has-text-primary-dark">${watch.specifications.type}</span>
                     </li>
                     <li>
-                    Strap material: ${watch.specifications['strap material']} 
+                      <span>Strap material:</span>
+                      <span class="has-text-primary-dark">${watch.specifications['strap material']}</span>
                     </li>
                     <li>
-                    Waterproof: ${watch.specifications.iswaterproof ? 'yes' : 'no'} 
+                      <span>Waterproof:</span>
+                      <span class="has-text-primary-dark">${watch.specifications.iswaterproof ? 'yes' : 'no'}</span>
                     </li>
                     <li>
-                    Sex: ${watch.specifications.sex}
+                      <span>Sex:</span>
+                      <span class="has-text-primary-dark">${watch.specifications.sex}</span>
                     </li>
                 </ul>
                 <br>
-                <input class="input is-rounded" id="amount" max="9" min="0" placeholder="amount" type="number">
-                <button id="${watch.id} "class="button is-rounded">Add to cart</button>
+                <div class="level">
+                  <div class="level-left" style="width: 50%;">
+                    <div class="level-item" style="width: 90%;">
+                      <input class="input is-rounded" id="amount" max="9" min="0" placeholder="amount" type="number">
+                    </div>
+                  </div>
+                  <div class="level-right" style="width: 50%;">
+                    <div class="level-item" style="width: 90%;">
+                      <button id="${watch.id} "class="button is-rounded is-primary">Add to cart</button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -169,7 +191,7 @@ function displayWatches(data){
 
 window.addEventListener('load', main);
 
-
+const CART = [];
 
 function addEventListenerToAllAddToCartButton(everyWatch) {
   const cartButton = document.querySelectorAll('button');
@@ -189,6 +211,15 @@ function addEventListenerToAllAddToCartButton(everyWatch) {
   });
   //console.log(CART);
   //return CART;
+}
+
+function homeButton(){
+  const logoButton = document.querySelector('.level-left');
+
+  logoButton.addEventListener('click', ()=>{
+    const contentElement = document.querySelector('#content');
+    contentElement.innerHTML = '';
+  });
 }
 
 
