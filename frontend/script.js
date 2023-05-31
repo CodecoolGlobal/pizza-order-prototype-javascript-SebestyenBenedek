@@ -106,7 +106,7 @@ function displayFilteredWatches(data){
                   </li>
               </ul>
               <br>
-              <input class="input is-rounded" id="amount" max="9" min="1" placeholder="amount" type="number">
+              <input class="input is-rounded" id="amount" max="9" min="0" placeholder="amount" type="number">
               <button id="${watch.id} "class="button is-rounded">Add to cart</button>
             </div>
           </div>
@@ -154,7 +154,7 @@ function displayWatches(data){
                     </li>
                 </ul>
                 <br>
-                <input class="input is-rounded" id="amount" max="9" min="1" placeholder="amount" type="number">
+                <input class="input is-rounded" id="amount" max="9" min="0" placeholder="amount" type="number">
                 <button id="${watch.id} "class="button is-rounded">Add to cart</button>
               </div>
             </div>
