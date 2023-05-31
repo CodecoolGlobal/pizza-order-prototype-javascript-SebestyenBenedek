@@ -106,8 +106,18 @@ function displayFilteredWatches(data){
                   </li>
               </ul>
               <br>
-              <input class="input is-rounded" id="amount" max="9" min="0" placeholder="amount" type="number">
-              <button id="${watch.id} "class="button is-rounded">Add to cart</button>
+              <div class="level">
+                  <div class="level-left" style="width: 50%;">
+                    <div class="level-item" style="width: 90%;">
+                      <input class="input is-rounded" id="amount" max="9" min="0" placeholder="amount" type="number">
+                    </div>
+                  </div>
+                  <div class="level-right" style="width: 50%;">
+                    <div class="level-item" style="width: 90%;">
+                      <button id="${watch.id} "class="button is-rounded is-primary">Add to cart</button>
+                    </div>
+                  </div>
+                </div>
             </div>
           </div>
         </div>
@@ -154,8 +164,18 @@ function displayWatches(data){
                     </li>
                 </ul>
                 <br>
-                <input class="input is-rounded" id="amount" max="9" min="0" placeholder="amount" type="number">
-                <button id="${watch.id} "class="button is-rounded">Add to cart</button>
+                <div class="level">
+                  <div class="level-left" style="width: 50%;">
+                    <div class="level-item" style="width: 90%;">
+                      <input class="input is-rounded" id="amount" max="9" min="0" placeholder="amount" type="number">
+                    </div>
+                  </div>
+                  <div class="level-right" style="width: 50%;">
+                    <div class="level-item" style="width: 90%;">
+                      <button id="${watch.id} "class="button is-rounded is-primary">Add to cart</button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
