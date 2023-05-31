@@ -126,6 +126,7 @@ function displayFilteredWatches(data){
 function displayWatches(data){
   const watchButton = document.querySelector('#watches');
   const contentElement = document.querySelector('#content');
+  contentElement.innerHTML = '';
 
   watchButton.addEventListener('click', ()=>{
     data.forEach((watch) => {
