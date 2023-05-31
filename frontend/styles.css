@@ -13,3 +13,14 @@ aside {
   padding: 2vh;
   width: 20vw;
 }
+
+#content {
+  padding: 2vh;
+  width: 80vw;
+
+}
+
+#root{
+  display: flex;
+  justify-content: center;
+}

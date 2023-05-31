@@ -18,13 +18,27 @@ function watchFilteringByColor(watches){
     watches.filter((watch) => watch)
 } */
 
-function main (){
-  getJSONData();
+async function main (){
+    const watchJSON = await getWatchData();
+    displayWatches(watchJSON);
 }
 
-async function getJSONData(){
+async function getWatchData(){
   const response = await fetch('http://127.0.0.1:9001/api/watches');
   const jsonData = await response.json();
   console.log(jsonData);
+  return jsonData;
 }
+function displayWatches(data){
+    const watchButton = document.querySelector('#watches');
+    const contentElement = document.querySelector('#content');
+
+    watchButton.addEventListener('click', ()=>{
+        data.forEach((watch) => {
+            contentElement.insertAdjacentHTML("beforeend", `<div>${watch.name}</div>`);
+        });
+    });
+
+}
+
 window.addEventListener('load', main);

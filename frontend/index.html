@@ -26,124 +26,125 @@
     </div>
   </nav>
 
-  
-  <aside class="menu">
-    <p class="menu-label">
-      Shop
-    </p>
-    <ul class="menu-list">
-      <li>
-        <a class="icon-text">
-          <span class="icon">
-            <i class="fas fa-shopping-bag" style="color: #000000;"></i> 
-          </span>
-          <span>Watches</span>
-        </a>
-      </li>
-    </ul>
+  <div id="root">
+    <aside class="menu">
+      <p class="menu-label">
+        Shop
+      </p>
+      <ul class="menu-list">
+        <li>
+          <a class="icon-text" id="watches">
+            <span class="icon">
+              <i class="fas fa-shopping-bag" style="color: #000000;"></i> 
+            </span>
+            <span>Watches</span>
+          </a>
+        </li>
+      </ul>
 
-    <p class="menu-label">
-      Orders
-    </p>
-    <ul class="menu-list">
-      <li>
-        <a class="icon-text">
-          <span class="icon">
-            <i class="fas fa-tasks" style="color: #000000;"></i>
-          </span>
-          <span>My Orders</span>
-        </a>
-      </li>
-      
-      <li>
-        <a class="icon-text">
-          <span class="icon">
-            <i class="fas fa-clipboard-list" style="color: #000000;"></i>
-          </span>
-          <span>List every order</span>
-        </a>
-      </li>
-    </ul>
+      <p class="menu-label">
+        Orders
+      </p>
+      <ul class="menu-list">
+        <li>
+          <a class="icon-text">
+            <span class="icon">
+              <i class="fas fa-tasks" style="color: #000000;"></i>
+            </span>
+            <span>My Orders</span>
+          </a>
+        </li>
+        
+        <li>
+          <a class="icon-text">
+            <span class="icon">
+              <i class="fas fa-clipboard-list" style="color: #000000;"></i>
+            </span>
+            <span>List every order</span>
+          </a>
+        </li>
+      </ul>
 
-    <hr>
+      <hr>
 
-    <p class="menu-label">
-      <b>Filters</b>
-    </p>
+      <p class="menu-label">
+        <b>Filters</b>
+      </p>
 
-    <p class="menu-label">
-      Sex
-    </p>
-    <ul class="menu-list">
-      <li>
+      <p class="menu-label">
+        Sex
+      </p>
+      <ul class="menu-list">
+        <li>
+          <label class="checkbox">
+            <input type="checkbox">
+            Man
+          </label>
+        </li>
+        
+        <li>
+          <label class="checkbox">
+            <input type="checkbox">
+            Woman
+          </label>
+        </li>
+      </ul>
+
+      <p class="menu-label">
+        Color
+      </p>
+      <ul class="menu-list">
         <label class="checkbox">
-          <input type="checkbox">
-          Man
+          <input type="checkbox" value="black">
+          Black
         </label>
-      </li>
-      
-      <li>
         <label class="checkbox">
-          <input type="checkbox">
-          Woman
+          <input type="checkbox" value="blue">
+          Blue
         </label>
-      </li>
-    </ul>
+        <label class="checkbox">
+          <input type="checkbox" value="gold">
+          Gold
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" value="white">
+          White
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" value="silver">
+          Silver
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" value="red">
+          Red
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" value="camouflage">
+          Camouflage
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" value="yellow">
+          Yellow
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" value="rose gold">
+          Rose gold
+        </label>
+      </ul>
 
-    <p class="menu-label">
-      Color
-    </p>
-    <ul class="menu-list">
-      <label class="checkbox">
-        <input type="checkbox" value="black">
-        Black
-      </label>
-      <label class="checkbox">
-        <input type="checkbox" value="blue">
-        Blue
-      </label>
-      <label class="checkbox">
-        <input type="checkbox" value="gold">
-        Gold
-      </label>
-      <label class="checkbox">
-        <input type="checkbox" value="white">
-        White
-      </label>
-      <label class="checkbox">
-        <input type="checkbox" value="silver">
-        Silver
-      </label>
-      <label class="checkbox">
-        <input type="checkbox" value="red">
-        Red
-      </label>
-      <label class="checkbox">
-        <input type="checkbox" value="camouflage">
-        Camouflage
-      </label>
-      <label class="checkbox">
-        <input type="checkbox" value="yellow">
-        Yellow
-      </label>
-      <label class="checkbox">
-        <input type="checkbox" value="rose gold">
-        Rose gold
-      </label>
-    </ul>
+      <hr>
 
-    <hr>
-
-    <p class="menu-label">
-      <button class="button is-small is-rounded">
-        <span class="icon">
-          <i class="fas fa-search" style="color: #000000;"></i>
-        </span>
-        <span>Filter!</span>
-      </button>
-    </p>
-  </aside>
-  
+      <p class="menu-label">
+        <button class="button is-small is-rounded">
+          <span class="icon">
+            <i class="fas fa-search" style="color: #000000;"></i>
+          </span>
+          <span>Filter!</span>
+        </button>
+      </p>
+    </aside>
+    <div id="content"></div>
+  </div>
 
 </body>
 </html>
