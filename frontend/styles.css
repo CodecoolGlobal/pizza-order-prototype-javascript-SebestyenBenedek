@@ -41,7 +41,7 @@ aside {
   display: flex;
   justify-content: center;
 } */
-.card{
+#watch-content .card{
   width: 20vw;
   margin: 2vw;
 }
