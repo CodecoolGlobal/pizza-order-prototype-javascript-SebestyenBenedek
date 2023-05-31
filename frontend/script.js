@@ -36,38 +36,40 @@ function displayWatches(data){
   watchButton.addEventListener('click', ()=>{
     data.forEach((watch) => {
       contentElement.insertAdjacentHTML('beforeend', `
-      <div class="card">
-            <div class="card-image">
-              <figure class="image is-4by3">
-                <img src="${watch.image}" alt="Placeholder image">
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="media">
-                <div class="media-content">
-                  <p class="title is-4">${watch.name}</p>
-                  <p class="subtitle is-6">${watch.price} Ft</p>
-                </div>
+        <div id='watch-content'>
+          <div class="card">
+              <div class="card-image">
+                <figure class="image is-4by3">
+                  <img src="${watch.image}" alt="Placeholder image">
+                </figure>
               </div>
-          
-              <div class="content">
-                <ul>
-                    <li>
-                    Type: ${watch.specifications.type}
-                    </li>
-                    <li>
-                    Strap material: ${watch.specifications['strap material']} 
-                    </li>
-                    <li>
-                    Waterproof: ${watch.specifications.iswaterproof ? 'yes' : 'no'} 
-                    </li>
-                    <li>
-                    Sex: ${watch.specifications.sex}
-                    </li>
-                </ul>
-                <br>
-                <input class="input is-rounded" id="amount" max="9" min="1" placeholder="amount" type="number">
-                <button class="button is-rounded">Add to cart</button>
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-content">
+                    <p class="title is-4">${watch.name}</p>
+                    <p class="subtitle is-6">${watch.price} Ft</p>
+                  </div>
+                </div>
+            
+                <div class="content">
+                  <ul>
+                      <li>
+                      Type: ${watch.specifications.type}
+                      </li>
+                      <li>
+                      Strap material: ${watch.specifications['strap material']} 
+                      </li>
+                      <li>
+                      Waterproof: ${watch.specifications.iswaterproof ? 'yes' : 'no'} 
+                      </li>
+                      <li>
+                      Sex: ${watch.specifications.sex}
+                      </li>
+                  </ul>
+                  <br>
+                  <input class="input is-rounded" id="amount" max="9" min="1" placeholder="amount" type="number">
+                  <button class="button is-rounded">Add to cart</button>
+                </div>
               </div>
             </div>
           </div>`);
