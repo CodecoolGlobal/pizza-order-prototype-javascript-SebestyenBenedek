@@ -35,7 +35,8 @@ function displayWatches(data){
 
   watchButton.addEventListener('click', ()=>{
     data.forEach((watch) => {
-      contentElement.insertAdjacentHTML('beforeend', `<div class="card">
+      contentElement.insertAdjacentHTML('beforeend', `
+      <div class="card">
             <div class="card-image">
               <figure class="image is-4by3">
                 <img src="https://placehold.jp/150x150.png" alt="Placeholder image">
@@ -65,7 +66,7 @@ function displayWatches(data){
                     </li>
                 </ul>
                 <br>
-                <input id="amount" max="9" min="1" placeholder="amount" type="number">
+                <input class="input is-rounded" id="amount" max="9" min="1" placeholder="amount" type="number">
                 <button class="button is-rounded">Add to cart</button>
               </div>
             </div>
