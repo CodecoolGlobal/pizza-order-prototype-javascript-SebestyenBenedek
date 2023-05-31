@@ -4,6 +4,7 @@ const fs = require('fs');
 const fileReaderAsync = require('./fileReader');
 const watchFilePath = path.join(`${__dirname}/watches.json`);
 const colorFilePath = path.join(`${__dirname}/colors.json`);
+//const orderFilePath = path.join(`${__dirname}/colors.json`);
 const cors = require('cors');
 const app = express();
 
@@ -34,6 +35,10 @@ app.get('/api/colors', async (req, res) => {
   res.send(JSON.stringify(colors));
 });
 
+
+// app.get('/order', async (req, res) => {
+//   res.send(displayOrders(data))
+// });
 
 
 

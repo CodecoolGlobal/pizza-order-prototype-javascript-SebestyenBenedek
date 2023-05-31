@@ -26,12 +26,18 @@ function watchFilteringByColor(data){
   }
 }
 
+
+const CART = [];
+
+
+
+
 async function main (){
   const watchJSON = await getWatchData();
   displayWatches(watchJSON);
   const colorJSON = await getColorData();
   checkBox(colorJSON);
-  console.log(watchFilteringByColor(watchJSON));
+  
 }
 
 async function getWatchData(){
@@ -86,14 +92,84 @@ function displayWatches(data){
                 </ul>
                 <br>
                 <input class="input is-rounded" id="amount" max="9" min="1" placeholder="amount" type="number">
-                <button class="button is-rounded">Add to cart</button>
+                <button id="${watch.id} "class="button is-rounded">Add to cart</button>
               </div>
             </div>
           </div>
         </div>`);
     });
+    addEventListenerToAllAddToCartButton(data);
   });
 
 }
 
 window.addEventListener('load', main);
+
+
+
+function addEventListenerToAllAddToCartButton(everyWatch) {
+  const cartButton = document.querySelectorAll('button');
+  console.log(cartButton);
+
+  cartButton.forEach((button) => {
+    button.addEventListener('click', function handleclick(event) {
+
+      //console.log(event.currentTarget.id);
+      everyWatch.forEach((watch) => {
+        //console.log(watch);
+        if (Number(event.currentTarget.id) === watch.id) CART.push(watch);
+      });
+      //console.log(event.currentTarget.id);
+      console.log(CART);
+    });
+  });
+  //console.log(CART);
+  //return CART;
+}
+
+
+function displayOrders(data) {
+  const cartButton = document.querySelector('#cart');
+  const orderElement = document.querySelector('#content');
+
+  cartButton.addEventListener('click', ()=>{
+    data.forEach((watch) => {
+      orderElement.insertAdjacentHTML('beforeend', `
+      <div class="card">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img src="${watch.image}" alt="Placeholder image">
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-content">
+                  <p class="title is-4">${watch.name}</p>
+                  <p class="subtitle is-6">${watch.price} Ft</p>
+                </div>
+              </div>
+          
+              <div class="content">
+                <ul>
+                    <li>
+                    Type: ${watch.specifications.type}
+                    </li>
+                    <li>
+                    Strap material: ${watch.specifications['strap material']} 
+                    </li>
+                    <li>
+                    Waterproof: ${watch.specifications.iswaterproof ? 'yes' : 'no'} 
+                    </li>
+                    <li>
+                    Sex: ${watch.specifications.sex}
+                    </li>
+                </ul>
+                <br>
+                <input class="input is-rounded" id="amount" max="9" min="1" placeholder="amount" type="number">
+                <button class="button is-rounded">Add to cart</button>
+              </div>
+            </div>
+          </div>`);
+    });
+  });
+}
