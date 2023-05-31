@@ -21,9 +21,12 @@ function checkBox(datas) {
 }
 
 function watchFilteringByColor(data){
+  let filtered;
   for (const colorID of checkedColorIDs) {
-    data.filter((watch) => watch.id === colorID);
+    filtered = data.filter((watch) => watch.colors.includes(colorID));
   }
+  console.log(filtered);
+  return filtered;
 }
 
 
@@ -37,7 +40,8 @@ async function main (){
   displayWatches(watchJSON);
   const colorJSON = await getColorData();
   checkBox(colorJSON);
-  
+  filterEventListener(watchJSON);
+
 }
 
 async function getWatchData(){
@@ -53,6 +57,15 @@ async function getColorData(){
   /* console.log(jsonData); */
   return jsonData;
 }
+
+function filterEventListener(data) {
+  const filterButton = document.querySelector('#filter');
+  filterButton.addEventListener('click', () => {
+    watchFilteringByColor(data);
+    displayWatches(data);
+  });
+}
+
 function displayWatches(data){
   const watchButton = document.querySelector('#watches');
   const contentElement = document.querySelector('#content');
