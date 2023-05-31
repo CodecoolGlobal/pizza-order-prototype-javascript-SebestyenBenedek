@@ -23,20 +23,13 @@ function checkBox(datas) {
 function watchFilteringByColor(data){
   const filtered = [];
   for (const colorID of checkedColorIDs) {
-/*     const xdc = data.filter((watch) => watch.colors.includes(colorID)); */
-    for(const watch of data){
-      if(watch.colors.includes(colorID)) filtered.push(watch);
+    for (const watch of data){
+      if (watch.colors.includes(colorID) && !filtered.includes(watch)) filtered.push(watch);
     }
   }
   console.log(filtered);
   return filtered;
 }
-
-
-const CART = [];
-
-
-
 
 async function main (){
   const watchJSON = await getWatchData();
@@ -44,7 +37,7 @@ async function main (){
   const colorJSON = await getColorData();
   checkBox(colorJSON);
   filterEventListener(watchJSON);
-
+  homeButton();
 }
 
 async function getWatchData(){
@@ -188,7 +181,7 @@ function displayWatches(data){
 
 window.addEventListener('load', main);
 
-
+const CART = [];
 
 function addEventListenerToAllAddToCartButton(everyWatch) {
   const cartButton = document.querySelectorAll('button');
@@ -208,6 +201,15 @@ function addEventListenerToAllAddToCartButton(everyWatch) {
   });
   //console.log(CART);
   //return CART;
+}
+
+function homeButton(){
+  const logoButton = document.querySelector('.level-left');
+
+  logoButton.addEventListener('click', ()=>{
+    const contentElement = document.querySelector('#content');
+    contentElement.innerHTML = '';
+  });
 }
 
 
