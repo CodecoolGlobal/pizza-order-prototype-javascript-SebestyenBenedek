@@ -9,7 +9,7 @@
 				"iswaterproof": true,
 				"sex": "men"
 								},
-			"price": 40709,
+			"price": 40.709,
 			"colors": [1]
 		},
 		{
@@ -21,7 +21,7 @@
 				"iswaterproof": false,
 				"sex": "men"
 								},
-			"price": 21015,
+			"price": 21.015,
 			"colors": [1, 2, 3, 4, 5]
 		},
 		{
@@ -33,7 +33,7 @@
 				"iswaterproof": true,
 				"sex": "men"
 								},
-			"price": 35520,
+			"price": 35.520,
 			"colors": [1, 2, 5, 6, 7]
 		},
 		{
@@ -45,7 +45,7 @@
 				"iswaterproof": true,
 				"sex": "men"
 								},
-			"price": 97325,
+			"price": 97.325,
 			"colors": [2]
 		},
 		{
@@ -57,7 +57,7 @@
 				"iswaterproof": false,
 				"sex": "men"
 								},
-			"price": 23390,
+			"price": 23.390,
 			"colors": [3]
 		},
 		{
@@ -69,7 +69,7 @@
 				"iswaterproof": true,
 				"sex": "men"
 								},
-			"price": 50392,
+			"price": 50.392,
 			"colors": [8]
 		},
 		{
@@ -81,7 +81,7 @@
 				"iswaterproof": true,
 				"sex": "women"
 								},
-			"price": 40709,
+			"price": 40.709,
 			"colors": [4, 5]
 		},
 		{
@@ -93,7 +93,7 @@
 				"iswaterproof": false,
 				"sex": "women"
 								},
-			"price": 46070,
+			"price": 46.070,
 			"colors": [4, 5]
 		},
 		{
@@ -105,7 +105,7 @@
 				"iswaterproof": false,
 				"sex": "women"
 								},
-			"price": 38500,
+			"price": 38.500,
 			"colors": [9]
 		},
 		{
@@ -117,7 +117,7 @@
 				"iswaterproof": true,
 				"sex": "women"
 								},
-			"price": 44358,
+			"price": 44.358,
 			"colors": [3]
 		},
 		{
@@ -129,7 +129,7 @@
 				"iswaterproof": true,
 				"sex": "women"
 								},
-			"price": 31265,
+			"price": 31.265,
 			"colors": [9]
 		},
 		{
@@ -141,7 +141,7 @@
 				"iswaterproof": true,
 				"sex": "women"
 								},
-			"price": 27930,
+			"price": 27.930,
 			"colors": [4]
 		},
 		{
@@ -153,7 +153,7 @@
 				"iswaterproof": true,
 				"sex": "women"
 								},
-			"price": 30990,
+			"price": 30.990,
 			"colors": [9]
 		},
 		{
@@ -165,7 +165,7 @@
 				"iswaterproof": false,
 				"sex": "women"
 								},
-			"price": 67900,
+			"price": 67.900,
 			"colors": [3]
 		},
 		{
@@ -177,7 +177,7 @@
 				"iswaterproof": true,
 				"sex": "women"
 								},
-			"price": 32280,
+			"price": 32.280,
 			"colors": [3]
 		},
 		{
@@ -189,7 +189,7 @@
 				"iswaterproof": false,
 				"sex": "women"
 								},
-			"price": 83505,
+			"price": 83.505,
 			"colors": [3, 5]
 		},
 		{
@@ -201,7 +201,7 @@
 				"iswaterproof": true,
 				"sex": "men"
 								},
-			"price": 102440,
+			"price": 102.440,
 			"colors": [1, 4, 5, 7]
 		},
 		{
@@ -213,7 +213,7 @@
 				"iswaterproof": true,
 				"sex": "men"
 								},
-			"price": 90240,
+			"price": 90.240,
 			"colors": [1, 5]
 		},
 		{
@@ -225,7 +225,7 @@
 				"iswaterproof": true,
 				"sex": "men"
 								},
-			"price": 65987,
+			"price": 65.987,
 			"colors": [7]
 		},
 		{
@@ -237,7 +237,7 @@
 				"iswaterproof": true,
 				"sex": "men"
 								},
-			"price": 104405,
+			"price": 104.405,
 			"colors": [5, 7]
 		}
 	]
