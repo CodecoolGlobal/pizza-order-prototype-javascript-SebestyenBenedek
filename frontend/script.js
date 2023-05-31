@@ -10,13 +10,19 @@ const colors = colorData.colors;
 
 let checkedColors = document.querySelector('.checkbox:checked').value;
 console.log(checkedColors.value);
- */
+*/
 
 /* let FILTERED_WATCHES = [];
 
 function watchFilteringByColor(watches){
-    watches.filter((watch) => watch)
+  watches.filter((watch) => watch)
 } */
+
+
+const CART = [];
+
+
+
 
 async function main (){
   const watchJSON = await getWatchData();
@@ -38,22 +44,22 @@ function displayWatches(data){
       contentElement.insertAdjacentHTML('beforeend', `
         <div id='watch-content'>
           <div class="card">
-              <div class="card-image">
-                <figure class="image is-4by3">
-                  <img src="${watch.image}" alt="Placeholder image">
-                </figure>
-              </div>
-              <div class="card-content">
-                <div class="media">
-                  <div class="media-content">
-                    <p class="title is-4">${watch.name}</p>
-                    <p class="subtitle is-6">${watch.price} Ft</p>
-                  </div>
-                </div>
+          <div class="card-image">
+          <figure class="image is-4by3">
+          <img src="${watch.image}" alt="Placeholder image">
+          </figure>
+          </div>
+          <div class="card-content">
+          <div class="media">
+          <div class="media-content">
+          <p class="title is-4">${watch.name}</p>
+          <p class="subtitle is-6">${watch.price} Ft</p>
+          </div>
+          </div>
             
                 <div class="content">
                   <ul>
-                      <li>
+                  <li>
                       Type: ${watch.specifications.type}
                       </li>
                       <li>
@@ -65,15 +71,16 @@ function displayWatches(data){
                       <li>
                       Sex: ${watch.specifications.sex}
                       </li>
-                  </ul>
-                  <br>
-                  <input class="input is-rounded" id="amount" max="9" min="1" placeholder="amount" type="number">
-                  <button class="button is-rounded">Add to cart</button>
-                </div>
-              </div>
-            </div>
-          </div>`);
+                      </ul>
+                      <br>
+                      <input class="input is-rounded" id="amount" max="9" min="1" placeholder="amount" type="number">
+                      <button id="${watch.id}"class="button is-rounded">Add to cart</button>
+                      </div>
+                      </div>
+                      </div>
+                      </div>`);
     });
+    addEventListenerToAllAddToCartButton(data);
   });
 
 }
@@ -82,10 +89,25 @@ window.addEventListener('load', main);
 
 
 
-function name(params) {
-  
-}
+function addEventListenerToAllAddToCartButton(everyWatch) {
+  const cartButton = document.querySelectorAll('button');
+  console.log(cartButton);
 
+  cartButton.forEach((button) => {
+    button.addEventListener('click', function handleclick(event) {
+
+      //console.log(event.currentTarget.id);
+      everyWatch.forEach((watch) => {
+        //console.log(watch);
+        if (Number(event.currentTarget.id) === watch.id) CART.push(watch);
+      });
+      //console.log(event.currentTarget.id);
+      console.log(CART);
+    });
+  });
+  //console.log(CART);
+  //return CART;
+}
 
 
 function displayOrders(data) {
