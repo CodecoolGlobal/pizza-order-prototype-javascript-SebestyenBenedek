@@ -46,8 +46,36 @@ aside {
   margin: 2vw;
 }
 
+#cart-content .card {
+  width: 30vw;
+  margin: 2vw;
+}
+
+#items-in-cart {
+  padding: 0;
+  margin: 0;
+}
+
+#items-in-cart .card{
+  margin: 0;
+  width: 100%;
+}
+
 figure, figure img {
   width: 50%;
   height: auto;
   margin: auto;
 }
+
+@media screen and (max-width: 768px) {
+  #cart-content .card {
+    width: 100%;
+    margin: 2vw;
+  }
+  
+  #items-in-cart .card{
+    width: 100%;
+    margin: 0;
+  }
+}
+
