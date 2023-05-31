@@ -44,7 +44,7 @@ async function main (){
   const colorJSON = await getColorData();
   checkBox(colorJSON);
   filterEventListener(watchJSON);
-
+  //addEventListenerToInput();
 }
 
 async function getWatchData(){
@@ -161,6 +161,7 @@ function displayWatches(data){
           </div>
         </div>`);
     });
+    addEventListenerToInput();
     addEventListenerToAllAddToCartButton(data);
   });
 
@@ -188,6 +189,16 @@ function addEventListenerToAllAddToCartButton(everyWatch) {
   });
   //console.log(CART);
   //return CART;
+}
+
+
+function addEventListenerToInput() {
+  const inputElement = document.querySelectorAll('input');
+  inputElement.forEach((input) => {
+    input.addEventListener('input', function handleInput(event) {
+      if (Number(event.target.value) < 1) event.target.value = null;
+    });
+  });
 }
 
 
