@@ -47,8 +47,8 @@ aside {
 }
 
 #cart-content .card {
-  width: 30vw;
-  margin: 2vw;
+  width: 33vw;
+  margin: 2vw 0;
 }
 
 #items-in-cart {
