@@ -79,23 +79,27 @@ function displayFilteredWatches(data){
             <div class="media">
               <div class="media-content">
                 <p class="title is-4">${watch.name}</p>
-                <p class="subtitle is-6">${watch.price} Ft</p>
+                <p class="subtitle is-6 has-text-primary-dark">${watch.price} Ft</p>
               </div>
             </div>
         
             <div class="content">
               <ul>
                   <li>
-                  Type: ${watch.specifications['type']}
+                    <span>Type:</span>
+                    <span class="has-text-primary-dark">${watch.specifications.type}</span>
                   </li>
                   <li>
-                  Strap material: ${watch.specifications['strap material']} 
+                    <span>Strap material:</span>
+                    <span class="has-text-primary-dark">${watch.specifications['strap material']}</span>
                   </li>
                   <li>
-                  Waterproof: ${watch.specifications.iswaterproof ? 'yes' : 'no'} 
+                    <span>Waterproof:</span>
+                    <span class="has-text-primary-dark">${watch.specifications.iswaterproof ? 'yes' : 'no'}</span>
                   </li>
                   <li>
-                  Sex: ${watch.specifications.sex}
+                    <span>Sex:</span>
+                    <span class="has-text-primary-dark">${watch.specifications.sex}</span>
                   </li>
               </ul>
               <br>
@@ -137,23 +141,27 @@ function displayWatches(data){
               <div class="media">
                 <div class="media-content">
                   <p class="title is-4">${watch.name}</p>
-                  <p class="subtitle is-6">${watch.price} Ft</p>
+                  <p class="subtitle is-6 has-text-primary-dark">${watch.price} Ft</p>
                 </div>
               </div>
           
               <div class="content">
                 <ul>
                     <li>
-                    Type: ${watch.specifications.type}
+                      <span>Type:</span>
+                      <span class="has-text-primary-dark">${watch.specifications.type}</span>
                     </li>
                     <li>
-                    Strap material: ${watch.specifications['strap material']} 
+                      <span>Strap material:</span>
+                      <span class="has-text-primary-dark">${watch.specifications['strap material']}</span>
                     </li>
                     <li>
-                    Waterproof: ${watch.specifications.iswaterproof ? 'yes' : 'no'} 
+                      <span>Waterproof:</span>
+                      <span class="has-text-primary-dark">${watch.specifications.iswaterproof ? 'yes' : 'no'}</span>
                     </li>
                     <li>
-                    Sex: ${watch.specifications.sex}
+                      <span>Sex:</span>
+                      <span class="has-text-primary-dark">${watch.specifications.sex}</span>
                     </li>
                 </ul>
                 <br>
