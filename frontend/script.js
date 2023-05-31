@@ -21,9 +21,12 @@ function checkBox(datas) {
 }
 
 function watchFilteringByColor(data){
-  let filtered;
+  const filtered = [];
   for (const colorID of checkedColorIDs) {
-    filtered = data.filter((watch) => watch.colors.includes(colorID));
+/*     const xdc = data.filter((watch) => watch.colors.includes(colorID)); */
+    for(const watch of data){
+      if(watch.colors.includes(colorID)) filtered.push(watch);
+    }
   }
   console.log(filtered);
   return filtered;
@@ -61,9 +64,56 @@ async function getColorData(){
 function filterEventListener(data) {
   const filterButton = document.querySelector('#filter');
   filterButton.addEventListener('click', () => {
-    watchFilteringByColor(data);
-    displayWatches(data);
+    const filteredArr = watchFilteringByColor(data);
+    displayFilteredWatches(filteredArr);
   });
+}
+
+function displayFilteredWatches(data){
+  const contentElement = document.querySelector('#content');
+  contentElement.innerHTML = '';
+
+  data.forEach((watch) => {
+    contentElement.insertAdjacentHTML('beforeend', `
+      <div id='watch-content'>
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img src="${watch.image}" alt="Placeholder image">
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                <p class="title is-4">${watch.name}</p>
+                <p class="subtitle is-6">${watch.price} Ft</p>
+              </div>
+            </div>
+        
+            <div class="content">
+              <ul>
+                  <li>
+                  Type: ${watch.specifications['type']}
+                  </li>
+                  <li>
+                  Strap material: ${watch.specifications['strap material']} 
+                  </li>
+                  <li>
+                  Waterproof: ${watch.specifications.iswaterproof ? 'yes' : 'no'} 
+                  </li>
+                  <li>
+                  Sex: ${watch.specifications.sex}
+                  </li>
+              </ul>
+              <br>
+              <input class="input is-rounded" id="amount" max="9" min="1" placeholder="amount" type="number">
+              <button id="${watch.id} "class="button is-rounded">Add to cart</button>
+            </div>
+          </div>
+        </div>
+      </div>`);
+  });
+  addEventListenerToAllAddToCartButton(data);
 }
 
 function displayWatches(data){
@@ -122,7 +172,7 @@ window.addEventListener('load', main);
 
 function addEventListenerToAllAddToCartButton(everyWatch) {
   const cartButton = document.querySelectorAll('button');
-  console.log(cartButton);
+  /* console.log(cartButton); */
 
   cartButton.forEach((button) => {
     button.addEventListener('click', function handleclick(event) {
