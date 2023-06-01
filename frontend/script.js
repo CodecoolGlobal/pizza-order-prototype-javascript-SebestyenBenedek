@@ -224,7 +224,7 @@ function addEventListenerToInput() {
   });
 }
 
-function addEeventListenerToOrder(){
+function addEventListenerToOrder(){
   const orderButton = document.querySelector('#post-btn');
 
   orderButton.addEventListener('click', async () => {
