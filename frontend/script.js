@@ -210,6 +210,8 @@ function addEventListenerToAllAddToCartButton(everyWatch) {
       everyWatch.forEach((watch) => {
         //console.log(watch);
         if (Number(event.currentTarget.id) === watch.id) {
+          watch.amount = Number(amountInputElement);
+          watch.price = Number(watch.price.split(',')[0].split('.').join(''));
           CART.push(watch);
           CART_AMOUNT.push(amountInputElement);
         }
@@ -270,6 +272,14 @@ function addEventListenerToOrder(){
       console.error(`Error: ${err}`);
     }
   });
+}
+
+function totalCost(){
+  let sum = 0;
+  CART.map((watch) => {
+    sum += watch.amount * watch.price;
+  });
+  return sum;
 }
 
 function addEventListenerToHomePageButton() {
@@ -371,7 +381,7 @@ function displayCart() {
                       </div>
                       <div class="level-right">
                         <div class="level-item">
-                          <h3>0 Ft</h3>
+                          <h3>${totalCost()} Ft</h3>
                         </div>
                       </div>
                     </div>
