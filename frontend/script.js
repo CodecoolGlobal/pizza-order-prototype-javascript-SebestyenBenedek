@@ -1,6 +1,7 @@
 const checkedColorIDs = [];
 const checkedColorBoxes = document.querySelectorAll('.checkbox');
 console.log(checkedColorBoxes);
+const currentDate = new Date();
 
 
 function checkBox(datas) {
@@ -237,12 +238,13 @@ function addEventListenerToOrder(){
   orderButton.addEventListener('click', async () => {
     //event.preventDefault();
     const orderObject = {
+      id: 0,
       date: {
-        year: 2022,
-        month: 6,
-        day: 7,
-        hour: 18,
-        minute: 47,
+        year: currentDate.getFullYear(),
+        month: (currentDate.getMonth() + 1),
+        day: currentDate.getDate(),
+        hour: currentDate.getHours(),
+        minute: currentDate.getMinutes(),
       },
       customer: {
         name: document.getElementById('name').value,
