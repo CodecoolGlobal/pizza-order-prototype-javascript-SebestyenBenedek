@@ -222,6 +222,24 @@ function addEventListenerToInput() {
   });
 }
 
+function addEeventListenerToOrder(){
+  const orderButton = document.querySelector('#post-btn');
+
+  orderButton.addEventListener('click', async () => {
+    try {
+      const response = await fetch('http://127.0.0.1:9001/api/order', {
+        method: 'post',
+        body: {
+          // Your body
+        },
+      });
+      console.log('Completed!', response);
+    } catch (err) {
+      console.error(`Error: ${err}`);
+    }
+  });
+}
+
 function displayOrders(data) {
   const cartButton = document.querySelector('#cart');
   const orderElement = document.querySelector('#content');
