@@ -256,6 +256,39 @@ function displayCart() {
   const cartButton = document.querySelector('#cart');
   const contentElement = document.querySelector('#content');
 
+  let cartItemsHTML = '';
+  if (CART.length > 1) {
+    CART.forEach((item) => {
+      cartItemsHTML += `
+      <div class="card"> 
+        <div class="card-content">
+          <div class="media">
+            <div class="media-left">
+              <figure class="image is-48x48">
+                <img src=${item.image} alt="Image">
+              </figure>
+            </div>
+            <div class="media-content">
+              <p class="title is-4">${item.name}</p>
+              <p class="subtitle is-6">${item.price}</p>
+            </div>
+            <input type="number" value="1" style="width: 35px;" min="1" max="9">
+          </div>
+        </div>
+      </div>
+      `;
+    });
+  }
+  else {
+    cartItemsHTML = `
+    <div class="notification is-danger is-light">
+      <strong>
+        You don't have any item in your cart yet!
+      </strong>
+    </div>
+    `;
+  }
+
   cartButton.addEventListener('click', ()=>{
     contentElement.innerHTML = '';
     contentElement.insertAdjacentHTML('beforeend', `
@@ -278,45 +311,7 @@ function displayCart() {
               
                   <div id="items-in-cart">
 
-                    <div class="notification is-danger is-light">
-                      <strong>
-                        You don't have any item in your cart yet!
-                      </strong>
-                    </div>
-
-                    <div class="card"> 
-                      <div class="card-content">
-                        <div class="media">
-                          <div class="media-left">
-                            <figure class="image is-48x48">
-                              <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-                            </figure>
-                          </div>
-                          <div class="media-content">
-                            <p class="title is-4">Item Name</p>
-                            <p class="subtitle is-6">Item Price (Ft)</p>
-                          </div>
-                          <input type="number" value="1" style="width: 35px;" min="1" max="9">
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="card"> 
-                      <div class="card-content">
-                        <div class="media">
-                          <div class="media-left">
-                            <figure class="image is-48x48">
-                              <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-                            </figure>
-                          </div>
-                          <div class="media-content">
-                            <p class="title is-4">Item Name</p>
-                            <p class="subtitle is-6">Item Price (Ft)</p>
-                          </div>
-                          <input type="number" value="1" style="width: 35px;" min="1" max="9">
-                        </div>
-                      </div>
-                    </div>
+                    ${cartItemsHTML}
 
                     <hr>
 
@@ -328,7 +323,7 @@ function displayCart() {
                       </div>
                       <div class="level-right">
                         <div class="level-item">
-                          <h3>x Ft</h3>
+                          <h3>0 Ft</h3>
                         </div>
                       </div>
                     </div>
