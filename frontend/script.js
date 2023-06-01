@@ -37,6 +37,7 @@ async function main (){
   const colorJSON = await getColorData();
   checkBox(colorJSON);
   filterEventListener(watchJSON);
+  addEventListenerToHomePageButton();
 }
 
 async function getWatchData(){
@@ -221,6 +222,17 @@ function addEventListenerToInput() {
     });
   });
 }
+
+
+function addEventListenerToHomePageButton() {
+  const homeButton = document.querySelector('.level-left');
+  const contentElement = document.querySelector('#content');
+
+  homeButton.addEventListener('click', function handleHomeButton(event) {
+    contentElement.innerHTML = '';
+  })
+}
+
 
 function displayOrders(data) {
   const cartButton = document.querySelector('#cart');
