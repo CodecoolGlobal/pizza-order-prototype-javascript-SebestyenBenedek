@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  height: auto;
 }
 
 nav {
@@ -44,6 +45,7 @@ aside {
 #watch-content .card{
   width: 20vw;
   margin: 2vw;
+  border-radius: 10px;
 }
 
 #cart-content .card {
@@ -65,6 +67,11 @@ figure, figure img {
   width: 50%;
   height: auto;
   margin: auto;
+}
+
+.is-tiktok-pink {
+  background-color: #FF004F;
+  color: whitesmoke;
 }
 
 @media screen and (max-width: 768px) {
