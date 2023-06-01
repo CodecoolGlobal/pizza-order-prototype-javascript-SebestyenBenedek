@@ -235,6 +235,7 @@ function addEventListenerToOrder(){
   const orderButton = document.querySelector('#post-btn');
 
   orderButton.addEventListener('click', async () => {
+    //event.preventDefault();
     const orderObject = {
       date: {
         year: 2022,
@@ -252,7 +253,7 @@ function addEventListenerToOrder(){
         },
       },
     };
-    console.log(document.getElementById('name').value);
+
     try {
       const response = await fetch('http://127.0.0.1:9001/api/order', {
         method: 'POST',
@@ -260,6 +261,8 @@ function addEventListenerToOrder(){
         body: JSON.stringify(orderObject),
 
       });
+      //window.location.href = "http://127.0.0.1:9001/";
+      document.getElementById('content').innerHTML = '<h1>Thank you for your order!</h1>';
       console.log('Completed!', response);
     } catch (err) {
       console.error(`Error: ${err}`);
@@ -382,7 +385,7 @@ function displayCart() {
 
         <!-- Űrlap -->
         <div class="level-right">
-          <form action="" method="post">
+          
             <div id="cart-content">
               <div class="card">
                 <div class="card-content">
@@ -476,7 +479,7 @@ function displayCart() {
                       <div class="level">
                         <div class="level-right">
                           <div class="level-item">
-                            <button id="post-btn" type="submit" class="button is-success is-rounded">
+                            <button id="post-btn" class="button is-success is-rounded">
                               <span class="icon">
                                 <i class="fas fa-money-check-alt"></i>
                               </span>
@@ -492,7 +495,7 @@ function displayCart() {
                 </div>
               </div>
             </div>
-          </form>
+          
         </div>
 
       </div>
