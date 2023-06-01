@@ -105,17 +105,17 @@ function displayFilteredWatches(data){
               </ul>
               <br>
               <div class="level">
-                  <div class="level-left" style="width: 50%;">
-                    <div class="level-item" style="width: 90%;">
-                      <input class="input is-rounded" id="amount" max="9" min="0" placeholder="amount" type="number">
-                    </div>
-                  </div>
-                  <div class="level-right" style="width: 50%;">
-                    <div class="level-item" style="width: 90%;">
-                      <button id="${watch.id} "class="button is-rounded is-primary">Add to cart</button>
-                    </div>
+                <div class="level-left" style="width: 50%;">
+                  <div class="level-item" style="width: 90%;">
+                    <input class="input is-rounded" id="amount_${watch.id}" max="9" min="0" placeholder="amount" type="number">
                   </div>
                 </div>
+                <div class="level-right" style="width: 50%;">
+                  <div class="level-item" style="width: 90%;">
+                    <button id="${watch.id}" class="button is-rounded is-primary">Add to cart</button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -262,7 +262,7 @@ function addEventListenerToOrder(){
 
       });
       //window.location.href = "http://127.0.0.1:9001/";
-      document.getElementById('content').innerHTML = '<h1>Thank you for your order!</h1>';
+      document.getElementById('content').innerHTML = '<hr><h1>Thank you for your order!</h1><hr>';
       console.log('Completed!', response);
     } catch (err) {
       console.error(`Error: ${err}`);
