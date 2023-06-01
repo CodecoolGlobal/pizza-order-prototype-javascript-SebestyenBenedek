@@ -4,7 +4,7 @@ const fs = require('fs');
 const fileReaderAsync = require('./fileReader');
 const watchFilePath = path.join(`${__dirname}/watches.json`);
 const colorFilePath = path.join(`${__dirname}/colors.json`);
-//const orderFilePath = path.join(`${__dirname}/colors.json`);
+//const orderFilePath = path.join(`${__dirname}/orders.json`);
 const cors = require('cors');
 const app = express();
 
@@ -33,6 +33,16 @@ app.get('/api/colors', async (req, res) => {
   res.setHeader('Content-Type', 'application/json');
 
   res.send(JSON.stringify(colors));
+});
+
+app.get('/api/order', async (req, res) => {
+  const fileData = JSON.parse(await fileReaderAsync(orderFilePath));
+  const orders = fileData.orders;
+
+  console.log(orders.toString());
+  res.setHeader('Content-Type', 'application/json');
+
+  res.send(JSON.stringify(orders));
 });
 
 

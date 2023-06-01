@@ -38,6 +38,7 @@ async function main (){
   checkBox(colorJSON);
   filterEventListener(watchJSON);
   addEventListenerToHomePageButton();
+  displayCart();
 }
 
 async function getWatchData(){
@@ -228,54 +229,233 @@ function addEventListenerToHomePageButton() {
   const homeButton = document.querySelector('.level-left');
   const contentElement = document.querySelector('#content');
 
-  homeButton.addEventListener('click', function handleHomeButton(event) {
+  homeButton.addEventListener('click', function handleHomeButton() {
     contentElement.innerHTML = '';
-  })
+  });
 }
 
 
-function displayOrders(data) {
+function displayCart() {
   const cartButton = document.querySelector('#cart');
-  const orderElement = document.querySelector('#content');
+  const contentElement = document.querySelector('#content');
 
   cartButton.addEventListener('click', ()=>{
-    data.forEach((watch) => {
-      orderElement.insertAdjacentHTML('beforeend', `
-      <div class="card">
-            <div class="card-image">
-              <figure class="image is-4by3">
-                <img src="${watch.image}" alt="Placeholder image">
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="media">
-                <div class="media-content">
-                  <p class="title is-4">${watch.name}</p>
-                  <p class="subtitle is-6">${watch.price} Ft</p>
+    contentElement.innerHTML = '';
+    contentElement.insertAdjacentHTML('beforeend', `
+      <div class="level" style="width: 90%;">
+        <!-- My Cart -->
+        <div class="level-left">
+          
+          <div id="cart-content">
+            <div class="card">
+              <div class="card-content">
+                <p class="title is-4">
+                  <span class="icon">
+                    <i class="fas fa-shopping-cart fa-sm" style="color: #000000;"></i>
+                  </span>
+                  <span>My Cart</span>
+                </p>
+                <hr>
+            
+                <div class="content">
+              
+                  <div id="items-in-cart">
+
+                    <div class="notification is-danger is-light">
+                      <strong>
+                        You don't have any item in your cart yet!
+                      </strong>
+                    </div>
+
+                    <div class="card"> 
+                      <div class="card-content">
+                        <div class="media">
+                          <div class="media-left">
+                            <figure class="image is-48x48">
+                              <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                            </figure>
+                          </div>
+                          <div class="media-content">
+                            <p class="title is-4">Item Name</p>
+                            <p class="subtitle is-6">Item Price (Ft)</p>
+                          </div>
+                          <input type="number" value="1" style="width: 35px;" min="1" max="9">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="card"> 
+                      <div class="card-content">
+                        <div class="media">
+                          <div class="media-left">
+                            <figure class="image is-48x48">
+                              <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                            </figure>
+                          </div>
+                          <div class="media-content">
+                            <p class="title is-4">Item Name</p>
+                            <p class="subtitle is-6">Item Price (Ft)</p>
+                          </div>
+                          <input type="number" value="1" style="width: 35px;" min="1" max="9">
+                        </div>
+                      </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="level">
+                      <div class="level-left">
+                        <div class="level-item">
+                          <h3>Total amount: </h3>
+                        </div>
+                      </div>
+                      <div class="level-right">
+                        <div class="level-item">
+                          <h3>x Ft</h3>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
                 </div>
               </div>
-          
-              <div class="content">
-                <ul>
-                    <li>
-                    Type: ${watch.specifications.type}
-                    </li>
-                    <li>
-                    Strap material: ${watch.specifications['strap material']} 
-                    </li>
-                    <li>
-                    Waterproof: ${watch.specifications.iswaterproof ? 'yes' : 'no'} 
-                    </li>
-                    <li>
-                    Sex: ${watch.specifications.sex}
-                    </li>
-                </ul>
-                <br>
-                <input class="input is-rounded" id="amount" max="9" min="1" placeholder="amount" type="number">
-                <button class="button is-rounded">Add to cart</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Űrlap -->
+        <div class="level-right">
+
+          <div id="cart-content">
+            <div class="card">
+              <div class="card-content">
+                <p class="title is-4">
+                  <span class="icon">
+                    <i class="fas fa-id-card" style="color: #000000;"></i>
+                  </span>
+                  <span>My Information</span>
+                </p>
+                <hr>
+            
+                <div class="content">
+              
+                  <div id="my-information-form">
+
+                    <p class="menu-label">
+                      Personal
+                    </p>
+                    <div class="field is-horizontal">
+                      <div class="field-label is-normal">
+                        <label class="label">Name</label>
+                      </div>
+                      <div class="field-body">
+                        <div class="field">
+                          <p class="control is-expanded has-icons-left has-icons-right">
+                            <input class="input" type="text" placeholder="Name">
+                            <span class="icon is-small is-left">
+                              <i class="fas fa-user"></i>
+                            </span>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="field is-horizontal">
+                      <div class="field-label is-normal">
+                        <label class="label">E-Mail</label>
+                      </div>
+                      <div class="field-body">
+                        <div class="field">
+                          <p class="control is-expanded has-icons-left has-icons-right">
+                            <input class="input" type="email" placeholder="Email">
+                            <span class="icon is-small is-left">
+                              <i class="fas fa-envelope"></i>
+                            </span>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <hr>
+
+                    <p class="menu-label">
+                      Address
+                    </p>
+                    <div class="field is-horizontal">
+                      <div class="field-label is-normal">
+                        <label class="label">City</label>
+                      </div>
+                      <div class="field-body">
+                        <div class="field">
+                          <p class="control is-expanded has-icons-left has-icons-right">
+                            <input class="input" type="text" placeholder="City">
+                            <span class="icon is-small is-left">
+                              <i class="fas fa-city"></i>
+                            </span>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="field is-horizontal">
+                      <div class="field-label is-normal">
+                        <label class="label">Street</label>
+                      </div>
+                      <div class="field-body">
+                        <div class="field">
+                          <p class="control is-expanded has-icons-left has-icons-right">
+                            <input class="input" type="text" placeholder="Street">
+                            <span class="icon is-small is-left">
+                              <i class="fas fa-road"></i>
+                            </span>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!--
+                    <hr>
+
+                    <div class="level">
+                      <div class="level-left">
+                        <div class="level-item">
+                          <h3>Total amount: </h3>
+                        </div>
+                      </div>
+                      <div class="level-right">
+                        <div class="level-item">
+                          <h3>x Ft</h3>
+                        </div>
+                      </div>
+                    </div>
+                    -->
+
+                    <hr>
+
+                    <div class="level">
+                      <div class="level-right">
+                        <div class="level-item">
+                          <button class="button is-success is-rounded">
+                            <span class="icon">
+                              <i class="fas fa-money-check-alt"></i>
+                            </span>
+                            <span>Order now!</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
               </div>
             </div>
-          </div>`);
-    });
+          </div>
+        </div>
+
+      </div>
+    `);
   });
 }
