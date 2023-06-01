@@ -1,6 +1,7 @@
 const checkedColorIDs = [];
 const checkedColorBoxes = document.querySelectorAll('.checkbox');
 console.log(checkedColorBoxes);
+const currentDate = new Date();
 
 
 function checkBox(datas) {
@@ -105,17 +106,17 @@ function displayFilteredWatches(data){
               </ul>
               <br>
               <div class="level">
-                  <div class="level-left" style="width: 50%;">
-                    <div class="level-item" style="width: 90%;">
-                      <input class="input is-rounded" id="amount" max="9" min="0" placeholder="amount" type="number">
-                    </div>
-                  </div>
-                  <div class="level-right" style="width: 50%;">
-                    <div class="level-item" style="width: 90%;">
-                      <button id="${watch.id} "class="button is-rounded is-primary">Add to cart</button>
-                    </div>
+                <div class="level-left" style="width: 50%;">
+                  <div class="level-item" style="width: 90%;">
+                    <input class="input is-rounded" id="amount_${watch.id}" max="9" min="0" placeholder="amount" type="number">
                   </div>
                 </div>
+                <div class="level-right" style="width: 50%;">
+                  <div class="level-item" style="width: 90%;">
+                    <button id="${watch.id}" class="button is-rounded is-primary">Add to cart</button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -209,6 +210,8 @@ function addEventListenerToAllAddToCartButton(everyWatch) {
       everyWatch.forEach((watch) => {
         //console.log(watch);
         if (Number(event.currentTarget.id) === watch.id) {
+          watch.amount = Number(amountInputElement);
+          watch.price = Number(watch.price.split(',')[0].split('.').join(''));
           CART.push(watch);
           CART_AMOUNT.push(amountInputElement);
         }
@@ -237,12 +240,13 @@ function addEventListenerToOrder(){
   orderButton.addEventListener('click', async () => {
     //event.preventDefault();
     const orderObject = {
+      id: 0,
       date: {
-        year: 2022,
-        month: 6,
-        day: 7,
-        hour: 18,
-        minute: 47,
+        year: currentDate.getFullYear(),
+        month: (currentDate.getMonth() + 1),
+        day: currentDate.getDate(),
+        hour: currentDate.getHours(),
+        minute: currentDate.getMinutes(),
       },
       customer: {
         name: document.getElementById('name').value,
@@ -262,12 +266,20 @@ function addEventListenerToOrder(){
 
       });
       //window.location.href = "http://127.0.0.1:9001/";
-      document.getElementById('content').innerHTML = '<h1>Thank you for your order!</h1>';
+      document.getElementById('content').innerHTML = '<hr><h1>Thank you for your order!</h1><hr>';
       console.log('Completed!', response);
     } catch (err) {
       console.error(`Error: ${err}`);
     }
   });
+}
+
+function totalCost(){
+  let sum = 0;
+  CART.map((watch) => {
+    sum += watch.amount * watch.price;
+  });
+  return sum;
 }
 
 function addEventListenerToHomePageButton() {
@@ -369,7 +381,7 @@ function displayCart() {
                       </div>
                       <div class="level-right">
                         <div class="level-item">
-                          <h3>0 Ft</h3>
+                          <h3>${totalCost()} Ft</h3>
                         </div>
                       </div>
                     </div>

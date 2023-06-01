@@ -1,1 +1,2 @@
-{"orders":[{"date":{"year":2022,"month":6,"day":7,"hour":18,"minute":47},"customer":{"name":"Sebestyén Benedek","email":"sebibebe@gmail.com","address":{"city":"Budapest","street":"Szilágyi Erzsébet fasor 43"}},"id":1},{"date":{"year":2022,"month":6,"day":7,"hour":18,"minute":47},"customer":{"name":"Sebestyén Benedek","email":"sebibebe@gmail.com","address":{"city":"Budapest","street":"Szilágyi Erzsébet fasor 43"}},"id":2},{"date":{"year":2022,"month":6,"day":7,"hour":18,"minute":47},"customer":{"name":"Sebestyén Benedek","email":"sebibebe@gmail.com","address":{"city":"Budapest","street":"Szilágyi Erzsébet fasor 43"}},"id":3}]}
+{"orders":[
+]}
