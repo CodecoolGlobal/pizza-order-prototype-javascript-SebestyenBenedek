@@ -260,9 +260,6 @@ function addEventListenerToHomePageButton() {
 
 
 function addEventListenerToDeleteCartButton() {
-  /* console.log(cartButton); */
-
-  //const deleteButton = [];
   CART.forEach((product) => {
     const deleteButton = document.getElementById(`delete_${product.id}`);
 
@@ -275,28 +272,6 @@ function addEventListenerToDeleteCartButton() {
     });
 
   });
-  //console.log(deleteButton);
-  
-  // cartButton.forEach((button) => {
-  //   button.addEventListener('click', function handleclick(event) {
-      
-  //     const amountInputElement = document.querySelector(`#amount_${event.currentTarget.id}`);
-
-  //     //console.log(event.currentTarget.id);
-  //     everyWatch.forEach((watch) => {
-  //       //console.log(watch);
-  //       if (Number(event.currentTarget.id) === watch.id) {
-  //         CART.push(watch);
-  //         CART_AMOUNT.push(amountInputElement);
-  //       }
-  //     });
-  //     //console.log(event.currentTarget.id);
-  //     console.log(CART);
-  //     console.log(CART_AMOUNT);
-  //   });
-  // });
-  //console.log(CART);
-  //return CART;
 }
 
 function displayCart() {
