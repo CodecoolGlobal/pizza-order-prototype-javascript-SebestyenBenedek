@@ -233,33 +233,32 @@ function addEventListenerToInput() {
 
 function addEventListenerToOrder(){
   const orderButton = document.querySelector('#post-btn');
-  const orderObject = {
-    pizzas: [
-      {id: 1, amount: 2},
-    ],
-    date: {
-      year: 2022,
-      month: 6,
-      day: 7,
-      hour: 18,
-      minute: 47,
-    },
-    customer: {
-      name: document.getElementById('name').value,
-      email: document.getElementById('email').value,
-      address: {
-        city: document.getElementById('city').value,
-        street: document.getElementById('street').value,
-      },
-    },
-  };
 
   orderButton.addEventListener('click', async () => {
+    const orderObject = {
+      date: {
+        year: 2022,
+        month: 6,
+        day: 7,
+        hour: 18,
+        minute: 47,
+      },
+      customer: {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        address: {
+          city: document.getElementById('city').value,
+          street: document.getElementById('street').value,
+        },
+      },
+    };
+    console.log(document.getElementById('name').value);
     try {
       const response = await fetch('http://127.0.0.1:9001/api/order', {
         method: 'POST',
         headers: {'Content-Type': 'application/json; charset=UTF-8'},
         body: JSON.stringify(orderObject),
+
       });
       console.log('Completed!', response);
     } catch (err) {
@@ -477,7 +476,7 @@ function displayCart() {
                       <div class="level">
                         <div class="level-right">
                           <div class="level-item">
-                            <button type="submit" class="button is-success is-rounded">
+                            <button id="post-btn" type="submit" class="button is-success is-rounded">
                               <span class="icon">
                                 <i class="fas fa-money-check-alt"></i>
                               </span>
@@ -499,5 +498,6 @@ function displayCart() {
       </div>
     `);
     addEventListenerToDeleteCartButton();
+    addEventListenerToOrder();
   });
 }
