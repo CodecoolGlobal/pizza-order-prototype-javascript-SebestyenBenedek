@@ -281,6 +281,9 @@ function displayCart() {
                 <p class="subtitle is-6">${item.price}</p>
               </div>
               <input class="input is-small is-rounded" type="number" value="1" style="width: 55px;" min="1" max="9">
+              <button class="button is-light is-danger is-small" style="margin: 0 5px;">
+                  <i class="fas fa-times"></i>
+              </button>
             </div>
           </div>
         </div>
