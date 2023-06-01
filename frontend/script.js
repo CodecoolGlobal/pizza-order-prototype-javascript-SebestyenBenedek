@@ -171,12 +171,12 @@ function displayWatches(data){
                 <div class="level">
                   <div class="level-left" style="width: 50%;">
                     <div class="level-item" style="width: 90%;">
-                      <input class="input is-rounded" id="amount" max="9" min="0" placeholder="amount" type="number">
+                      <input class="input is-rounded" id="amount_${watch.id}" max="9" min="0" placeholder="amount" type="number">
                     </div>
                   </div>
                   <div class="level-right" style="width: 50%;">
                     <div class="level-item" style="width: 90%;">
-                      <button id="${watch.id} "class="button is-rounded is-primary">Add to cart</button>
+                      <button id="${watch.id}" class="button is-rounded is-primary">Add to cart</button>
                     </div>
                   </div>
                 </div>
@@ -202,10 +202,16 @@ function addEventListenerToAllAddToCartButton(everyWatch) {
   cartButton.forEach((button) => {
     button.addEventListener('click', function handleclick(event) {
 
+      const amountInputElement = document.querySelector(`#amount_${event.currentTarget.id}`).value;
+
       //console.log(event.currentTarget.id);
       everyWatch.forEach((watch) => {
         //console.log(watch);
-        if (Number(event.currentTarget.id) === watch.id) CART.push(watch);
+        if (Number(event.currentTarget.id) === watch.id) {
+          for (let i = 1; i <= amountInputElement; i++) {
+            CART.push(watch);
+          }
+        }
       });
       //console.log(event.currentTarget.id);
       console.log(CART);
@@ -256,40 +262,41 @@ function displayCart() {
   const cartButton = document.querySelector('#cart');
   const contentElement = document.querySelector('#content');
 
-  let cartItemsHTML = '';
-  if (CART.length > 1) {
-    CART.forEach((item) => {
-      cartItemsHTML += `
-      <div class="card"> 
-        <div class="card-content">
-          <div class="media">
-            <div class="media-left">
-              <figure class="image is-48x48">
-                <img src=${item.image} alt="Image">
-              </figure>
+  cartButton.addEventListener('click', ()=>{
+
+    let cartItemsHTML = '';
+    if (CART.length >= 1) {
+      CART.forEach((item) => {
+        cartItemsHTML += `
+        <div class="card"> 
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-48x48" style="height: 100%;">
+                  <img src="${item.image}" alt="Image" style="height: 100%">
+                </figure>
+              </div>
+              <div class="media-content">
+                <p class="title is-4">${item.name}</p>
+                <p class="subtitle is-6">${item.price}</p>
+              </div>
+              <input class="input is-small is-rounded" type="number" value="1" style="width: 55px;" min="1" max="9">
             </div>
-            <div class="media-content">
-              <p class="title is-4">${item.name}</p>
-              <p class="subtitle is-6">${item.price}</p>
-            </div>
-            <input type="number" value="1" style="width: 35px;" min="1" max="9">
           </div>
         </div>
+        `;
+      });
+    }
+    else {
+      cartItemsHTML = `
+      <div class="notification is-danger is-light">
+        <strong>
+          You don't have any item in your cart yet!
+        </strong>
       </div>
       `;
-    });
-  }
-  else {
-    cartItemsHTML = `
-    <div class="notification is-danger is-light">
-      <strong>
-        You don't have any item in your cart yet!
-      </strong>
-    </div>
-    `;
-  }
+    }
 
-  cartButton.addEventListener('click', ()=>{
     contentElement.innerHTML = '';
     contentElement.insertAdjacentHTML('beforeend', `
       <div class="level" style="width: 90%;">
