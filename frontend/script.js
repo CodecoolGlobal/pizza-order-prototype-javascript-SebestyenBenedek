@@ -259,6 +259,46 @@ function addEventListenerToHomePageButton() {
 }
 
 
+function addEventListenerToDeleteCartButton() {
+  /* console.log(cartButton); */
+
+  //const deleteButton = [];
+  CART.forEach((product) => {
+    const deleteButton = document.getElementById(`delete_${product.id}`);
+
+    deleteButton.addEventListener('click', function handleclick(event) {
+      event.target.parentNode.parentNode.parentElement.remove();
+      // eslint-disable-next-line max-len
+      const index = CART.findIndex((watch) => watch.id === Number(event.currentTarget.id.split('_')[1]));
+      CART.splice(index, 1);
+      CART_AMOUNT.splice(index, 1);
+    });
+
+  });
+  //console.log(deleteButton);
+  
+  // cartButton.forEach((button) => {
+  //   button.addEventListener('click', function handleclick(event) {
+      
+  //     const amountInputElement = document.querySelector(`#amount_${event.currentTarget.id}`);
+
+  //     //console.log(event.currentTarget.id);
+  //     everyWatch.forEach((watch) => {
+  //       //console.log(watch);
+  //       if (Number(event.currentTarget.id) === watch.id) {
+  //         CART.push(watch);
+  //         CART_AMOUNT.push(amountInputElement);
+  //       }
+  //     });
+  //     //console.log(event.currentTarget.id);
+  //     console.log(CART);
+  //     console.log(CART_AMOUNT);
+  //   });
+  // });
+  //console.log(CART);
+  //return CART;
+}
+
 function displayCart() {
   const cartButton = document.querySelector('#cart');
   const contentElement = document.querySelector('#content');
@@ -282,7 +322,7 @@ function displayCart() {
                 <p class="subtitle is-6">${item.price}</p>
               </div>
               <input class="input is-small is-rounded" type="number" value="${CART_AMOUNT[i]}" style="width: 55px;" min="1" max="9" disabled>
-              <button class="button is-light is-danger is-small" style="margin: 0 5px;">
+              <button id="delete_${item.id}" class="button is-light is-danger is-small" style="margin: 0 5px;">
                   <i class="fas fa-times"></i>
               </button>
             </div>
@@ -480,5 +520,6 @@ function displayCart() {
 
       </div>
     `);
+    addEventListenerToDeleteCartButton();
   });
 }
