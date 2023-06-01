@@ -233,14 +233,33 @@ function addEventListenerToInput() {
 
 function addEventListenerToOrder(){
   const orderButton = document.querySelector('#post-btn');
+  const orderObject = {
+    pizzas: [
+      {id: 1, amount: 2},
+    ],
+    date: {
+      year: 2022,
+      month: 6,
+      day: 7,
+      hour: 18,
+      minute: 47,
+    },
+    customer: {
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      address: {
+        city: document.getElementById('city').value,
+        street: document.getElementById('street').value,
+      },
+    },
+  };
 
   orderButton.addEventListener('click', async () => {
     try {
       const response = await fetch('http://127.0.0.1:9001/api/order', {
-        method: 'post',
-        body: {
-          // Your body
-        },
+        method: 'POST',
+        headers: {'Content-Type': 'application/json; charset=UTF-8'},
+        body: JSON.stringify(orderObject),
       });
       console.log('Completed!', response);
     } catch (err) {
@@ -305,8 +324,7 @@ function displayCart() {
         </div>
         `;
       });
-    }
-    else {
+    } else {
       cartItemsHTML = `
       <div class="notification is-danger is-light">
         <strong>
@@ -391,7 +409,7 @@ function displayCart() {
                         <div class="field-body">
                           <div class="field">
                             <p class="control is-expanded has-icons-left has-icons-right">
-                              <input class="input" type="text" placeholder="Name" required>
+                              <input id="name" class="input" type="text" placeholder="Name" required>
                               <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
                               </span>
@@ -407,7 +425,7 @@ function displayCart() {
                         <div class="field-body">
                           <div class="field">
                             <p class="control is-expanded has-icons-left has-icons-right">
-                              <input class="input" type="email" placeholder="Email" required>
+                              <input id="email" class="input" type="email" placeholder="Email" required>
                               <span class="icon is-small is-left">
                                 <i class="fas fa-envelope"></i>
                               </span>
@@ -428,7 +446,7 @@ function displayCart() {
                         <div class="field-body">
                           <div class="field">
                             <p class="control is-expanded has-icons-left has-icons-right">
-                              <input class="input" type="text" placeholder="City" required>
+                              <input id="city" class="input" type="text" placeholder="City" required>
                               <span class="icon is-small is-left">
                                 <i class="fas fa-city"></i>
                               </span>
@@ -444,7 +462,7 @@ function displayCart() {
                         <div class="field-body">
                           <div class="field">
                             <p class="control is-expanded has-icons-left has-icons-right">
-                              <input class="input" type="text" placeholder="Street" required>
+                              <input id="street" class="input" type="text" placeholder="Street" required>
                               <span class="icon is-small is-left">
                                 <i class="fas fa-road"></i>
                               </span>
