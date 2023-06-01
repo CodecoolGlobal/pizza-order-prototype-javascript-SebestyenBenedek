@@ -194,6 +194,7 @@ function displayWatches(data){
 window.addEventListener('load', main);
 
 const CART = [];
+const CART_AMOUNT = [];
 
 function addEventListenerToAllAddToCartButton(everyWatch) {
   const cartButton = document.querySelectorAll('button');
@@ -208,13 +209,13 @@ function addEventListenerToAllAddToCartButton(everyWatch) {
       everyWatch.forEach((watch) => {
         //console.log(watch);
         if (Number(event.currentTarget.id) === watch.id) {
-          for (let i = 1; i <= amountInputElement; i++) {
-            CART.push(watch);
-          }
+          CART.push(watch);
+          CART_AMOUNT.push(amountInputElement);
         }
       });
       //console.log(event.currentTarget.id);
       console.log(CART);
+      console.log(CART_AMOUNT);
     });
   });
   //console.log(CART);
@@ -266,7 +267,7 @@ function displayCart() {
 
     let cartItemsHTML = '';
     if (CART.length >= 1) {
-      CART.forEach((item) => {
+      CART.forEach((item, i) => {
         cartItemsHTML += `
         <div class="card"> 
           <div class="card-content">
@@ -280,7 +281,7 @@ function displayCart() {
                 <p class="title is-4">${item.name}</p>
                 <p class="subtitle is-6">${item.price}</p>
               </div>
-              <input class="input is-small is-rounded" type="number" value="1" style="width: 55px;" min="1" max="9">
+              <input class="input is-small is-rounded" type="number" value="${CART_AMOUNT[i]}" style="width: 55px;" min="1" max="9" disabled>
               <button class="button is-light is-danger is-small" style="margin: 0 5px;">
                   <i class="fas fa-times"></i>
               </button>
