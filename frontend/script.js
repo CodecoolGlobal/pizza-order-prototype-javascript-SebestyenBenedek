@@ -209,7 +209,7 @@ function addEventListenerToAllAddToCartButton(everyWatch) {
       //console.log(event.currentTarget.id);
       everyWatch.forEach((watch) => {
         //console.log(watch);
-        if (Number(event.currentTarget.id) === watch.id) {
+        if (Number(event.currentTarget.id) === watch.id && amountInputElement > 0) {
           watch.amount = Number(amountInputElement);
           watch.price = Number(watch.price.split(',')[0].split('.').join(''));
           CART.push(watch);
