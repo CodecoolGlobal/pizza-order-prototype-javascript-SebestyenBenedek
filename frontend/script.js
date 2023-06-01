@@ -37,7 +37,6 @@ async function main (){
   const colorJSON = await getColorData();
   checkBox(colorJSON);
   filterEventListener(watchJSON);
-  homeButton();
 }
 
 async function getWatchData(){
@@ -182,16 +181,6 @@ function addEventListenerToAllAddToCartButton(everyWatch) {
   //console.log(CART);
   //return CART;
 }
-
-function homeButton(){
-  const logoButton = document.querySelector('.level-left');
-
-  logoButton.addEventListener('click', ()=>{
-    const contentElement = document.querySelector('#content');
-    contentElement.innerHTML = '';
-  });
-}
-
 
 function displayOrders(data) {
   const cartButton = document.querySelector('#cart');
