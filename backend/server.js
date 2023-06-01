@@ -4,7 +4,7 @@ const fs = require('fs');
 const fileReaderAsync = require('./fileReader');
 const watchFilePath = path.join(`${__dirname}/watches.json`);
 const colorFilePath = path.join(`${__dirname}/colors.json`);
-//const orderFilePath = path.join(`${__dirname}/orders.json`);
+const orderFilePath = path.join(`${__dirname}/orders.json`);
 const cors = require('cors');
 const app = express();
 
@@ -14,6 +14,17 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static('frontend'));
 
 const port = 9001;
+
+function fileWriter(orders) {
+  const content = {
+    orders: orders,
+  };
+  fs.writeFile(`${__dirname}/orders.json`, JSON.stringify(content), (err) => {
+    if (err) {
+      console.error(err);
+    }
+  });
+}
 
 app.get('/api/watches', async (req, res) => {
   const fileData = JSON.parse(await fileReaderAsync(watchFilePath));
@@ -46,9 +57,30 @@ app.get('/api/order', async (req, res) => {
 });
 
 
-// app.get('/order', async (req, res) => {
-//   res.send(displayOrders(data))
-// });
+app.post('/api/order', async (req, res) => {
+  // New package object from the request body
+  const newOrder = req.body;
+
+  // Read the existing packages data from pkgs.json
+  const fileData = JSON.parse(await fileReaderAsync(orderFilePath));
+  const orders = fileData.orders;
+
+  // Generate a new unique ID for the package
+  const maxId = orders.reduce((max, ord) => (ord.id > max ? ord.id : max), 0);
+  const newId = maxId + 1;
+
+  // Assign the new ID to the package
+  newOrder.id = newId;
+
+  // Add the new package to the array
+  orders.push(newOrder);
+
+  // Write the updated packages data to pkgs.json
+  res.setHeader('Content-Type', 'application/json');
+  fileWriter(orders);
+
+  res.end('DONE');
+});
 
 
 
