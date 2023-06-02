@@ -266,7 +266,10 @@ function addEventListenerToOrder(){
 
       });
       //window.location.href = "http://127.0.0.1:9001/";
-      document.getElementById('content').innerHTML = '<hr><h1>Thank you for your order!</h1><hr>';
+      //document.getElementById('content').innerHTML = '<hr><h1>Thank you for your order!</h1><hr>';
+      displayThankYouMessage();
+      while (CART.length > 0) CART.pop();
+      while (CART_AMOUNT.length > 0) CART_AMOUNT.pop();
       console.log('Completed!', response);
     } catch (err) {
       console.error(`Error: ${err}`);
@@ -302,9 +305,218 @@ function addEventListenerToDeleteCartButton() {
       const index = CART.findIndex((watch) => watch.id === Number(event.currentTarget.id.split('_')[1]));
       CART.splice(index, 1);
       CART_AMOUNT.splice(index, 1);
+
+      refreshCart();
+      //UpdateTotalCost() needed
     });
 
   });
+}
+
+function refreshCart() {
+  const contentElement = document.querySelector('#content');
+
+  let cartItemsHTML = '';
+    if (CART.length >= 1) {
+      CART.forEach((item, i) => {
+        cartItemsHTML += `
+        <div class="card"> 
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-48x48" style="height: 100%;">
+                  <img src="${item.image}" alt="Image" style="height: 100%">
+                </figure>
+              </div>
+              <div class="media-content">
+                <p class="title is-4">${item.name}</p>
+                <p class="subtitle is-6">${item.price}</p>
+              </div>
+              <input class="input is-small is-rounded" type="number" value="${CART_AMOUNT[i]}" style="width: 55px;" min="1" max="9" disabled>
+              <button id="delete_${item.id}" class="button is-light is-danger is-small" style="margin: 0 5px;">
+                  <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        `;
+      });
+    } else {
+      cartItemsHTML = `
+      <div class="notification is-danger is-light">
+        <strong>
+          You don't have any item in your cart yet!
+        </strong>
+      </div>
+      `;
+    }
+
+    contentElement.innerHTML = '';
+    contentElement.insertAdjacentHTML('beforeend', `
+      <div class="level" style="width: 90%;">
+        <!-- My Cart -->
+        <div class="level-left">
+          
+          <div id="cart-content">
+            <div class="card">
+              <div class="card-content">
+                <p class="title is-4">
+                  <span class="icon">
+                    <i class="fas fa-shopping-cart fa-sm" style="color: #000000;"></i>
+                  </span>
+                  <span>My Cart</span>
+                </p>
+                <hr>
+            
+                <div class="content">
+              
+                  <div id="items-in-cart">
+
+                    ${cartItemsHTML}
+
+                    <hr>
+
+                    <div class="level">
+                      <div class="level-left">
+                        <div class="level-item">
+                          <h3>Total amount: </h3>
+                        </div>
+                      </div>
+                      <div class="level-right">
+                        <div class="level-item">
+                          <h3>${totalCost()} Ft</h3>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Űrlap -->
+        <div class="level-right">
+          
+            <div id="cart-content">
+              <div class="card">
+                <div class="card-content">
+                  <p class="title is-4">
+                    <span class="icon">
+                      <i class="fas fa-id-card" style="color: #000000;"></i>
+                    </span>
+                    <span>My Information</span>
+                  </p>
+                  <hr>
+              
+                  <div class="content">
+                
+                    <div id="my-information-form">
+
+                      <p class="menu-label">
+                        Personal
+                      </p>
+                      <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                          <label class="label">Name</label>
+                        </div>
+                        <div class="field-body">
+                          <div class="field">
+                            <p class="control is-expanded has-icons-left has-icons-right">
+                              <input id="name" class="input" type="text" placeholder="Name" required>
+                              <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                              </span>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                          <label class="label">E-Mail</label>
+                        </div>
+                        <div class="field-body">
+                          <div class="field">
+                            <p class="control is-expanded has-icons-left has-icons-right">
+                              <input id="email" class="input" type="email" placeholder="Email" required>
+                              <span class="icon is-small is-left">
+                                <i class="fas fa-envelope"></i>
+                              </span>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <hr>
+
+                      <p class="menu-label">
+                        Address
+                      </p>
+                      <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                          <label class="label">City</label>
+                        </div>
+                        <div class="field-body">
+                          <div class="field">
+                            <p class="control is-expanded has-icons-left has-icons-right">
+                              <input id="city" class="input" type="text" placeholder="City" required>
+                              <span class="icon is-small is-left">
+                                <i class="fas fa-city"></i>
+                              </span>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                          <label class="label">Street</label>
+                        </div>
+                        <div class="field-body">
+                          <div class="field">
+                            <p class="control is-expanded has-icons-left has-icons-right">
+                              <input id="street" class="input" type="text" placeholder="Street" required>
+                              <span class="icon is-small is-left">
+                                <i class="fas fa-road"></i>
+                              </span>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <hr>
+
+                      <div class="level">
+                        <div class="level-right">
+                          <div class="level-item">
+                            <button id="post-btn" class="button is-success is-rounded">
+                              <span class="icon">
+                                <i class="fas fa-money-check-alt"></i>
+                              </span>
+                              <span>Order now!</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+        </div>
+
+      </div>
+    `);
+    addEventListenerToDeleteCartButton();
+    addEventListenerToOrder();
 }
 
 function displayCart() {
@@ -515,4 +727,27 @@ function displayCart() {
     addEventListenerToDeleteCartButton();
     addEventListenerToOrder();
   });
+}
+
+function displayThankYouMessage() {
+  const contentElement = document.querySelector('#content');
+  contentElement.innerHTML = '';
+
+  contentElement.insertAdjacentHTML('beforeend', `
+  <div class="card" style="width: 80%;"> 
+    <div class="card-content">
+      <div class="media">
+        <div class="media-content">
+          <p class="title is-4">
+            <h1 style="font-size: 72px; text-align: center;"><strong>THANK YOU!</strong></h1>
+            <p style="text-align: center; margin: 5%;">
+              <i class="far fa-check-circle" style="color: green; font-size: 72px;"></i>
+            </p>
+            <h2 style="font-size: 22px; text-align: center;"><i>for Your order</i></h2>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  `);
 }
