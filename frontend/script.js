@@ -34,7 +34,7 @@ function watchFilteringByColor(data){
 
 async function main (){
   const watchJSON = await getWatchData();
-  displayWatches(watchJSON);
+  watchesButtonEventListener(watchJSON);
   const colorJSON = await getColorData();
   checkBox(colorJSON);
   filterEventListener(watchJSON);
@@ -60,134 +60,15 @@ function filterEventListener(data) {
   const filterButton = document.querySelector('#filter');
   filterButton.addEventListener('click', () => {
     const filteredArr = watchFilteringByColor(data);
-    displayFilteredWatches(filteredArr);
+    displayWatches(filteredArr);
   });
 }
 
-function displayFilteredWatches(data){
-  const contentElement = document.querySelector('#content');
-  contentElement.innerHTML = '';
-
-  data.forEach((watch) => {
-    contentElement.insertAdjacentHTML('beforeend', `
-      <div id='watch-content'>
-        <div class="card">
-          <div class="card-image">
-            <figure class="image is-4by3">
-              <img src="${watch.image}" alt="Placeholder image">
-            </figure>
-          </div>
-          <div class="card-content">
-            <div class="media">
-              <div class="media-content">
-                <p class="title is-4">${watch.name}</p>
-                <p class="subtitle is-6 has-text-primary-dark">${watch.price} Ft</p>
-              </div>
-            </div>
-        
-            <div class="content">
-              <ul>
-                  <li>
-                    <span>Type:</span>
-                    <span class="has-text-primary-dark">${watch.specifications.type}</span>
-                  </li>
-                  <li>
-                    <span>Strap material:</span>
-                    <span class="has-text-primary-dark">${watch.specifications['strap material']}</span>
-                  </li>
-                  <li>
-                    <span>Waterproof:</span>
-                    <span class="has-text-primary-dark">${watch.specifications.iswaterproof ? 'yes' : 'no'}</span>
-                  </li>
-                  <li>
-                    <span>Sex:</span>
-                    <span class="has-text-primary-dark">${watch.specifications.sex}</span>
-                  </li>
-              </ul>
-              <br>
-              <div class="level">
-                <div class="level-left" style="width: 50%;">
-                  <div class="level-item" style="width: 90%;">
-                    <input class="input is-rounded" id="amount_${watch.id}" max="9" min="0" placeholder="amount" type="number">
-                  </div>
-                </div>
-                <div class="level-right" style="width: 50%;">
-                  <div class="level-item" style="width: 90%;">
-                    <button id="${watch.id}" class="button is-rounded is-primary">Add to cart</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>`);
-  });
-  addEventListenerToInput();
-  addEventListenerToAllAddToCartButton(data);
-}
-
-function displayWatches(data){
+function watchesButtonEventListener(data){
   const watchButton = document.querySelector('#watches');
-  const contentElement = document.querySelector('#content');
 
   watchButton.addEventListener('click', ()=>{
-    contentElement.innerHTML = '';
-    data.forEach((watch) => {
-      contentElement.insertAdjacentHTML('beforeend', `
-        <div id='watch-content'>
-          <div class="card">
-            <div class="card-image">
-              <figure class="image is-4by3">
-                <img src="${watch.image}" alt="Placeholder image">
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="media">
-                <div class="media-content">
-                  <p class="title is-4">${watch.name}</p>
-                  <p class="subtitle is-6 has-text-primary-dark">${watch.price} Ft</p>
-                </div>
-              </div>
-          
-              <div class="content">
-                <ul>
-                    <li>
-                      <span>Type:</span>
-                      <span class="has-text-primary-dark">${watch.specifications.type}</span>
-                    </li>
-                    <li>
-                      <span>Strap material:</span>
-                      <span class="has-text-primary-dark">${watch.specifications['strap material']}</span>
-                    </li>
-                    <li>
-                      <span>Waterproof:</span>
-                      <span class="has-text-primary-dark">${watch.specifications.iswaterproof ? 'yes' : 'no'}</span>
-                    </li>
-                    <li>
-                      <span>Sex:</span>
-                      <span class="has-text-primary-dark">${watch.specifications.sex}</span>
-                    </li>
-                </ul>
-                <br>
-                <div class="level">
-                  <div class="level-left" style="width: 50%;">
-                    <div class="level-item" style="width: 90%;">
-                      <input class="input is-rounded" id="amount_${watch.id}" max="9" min="0" placeholder="amount" type="number">
-                    </div>
-                  </div>
-                  <div class="level-right" style="width: 50%;">
-                    <div class="level-item" style="width: 90%;">
-                      <button id="${watch.id}" class="button is-rounded is-primary">Add to cart</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>`);
-    });
-    addEventListenerToInput();
-    addEventListenerToAllAddToCartButton(data);
+    displayWatches(data);
   });
 
 }
@@ -321,6 +202,68 @@ function displayCart() {
   cartButton.addEventListener('click', ()=>{
     cartDomManipulation(contentElement);
   });
+}
+
+function displayWatches(data){
+  const contentElement = document.querySelector('#content');
+  contentElement.innerHTML = '';
+
+  data.forEach((watch) => {
+    contentElement.insertAdjacentHTML('beforeend', `
+      <div id='watch-content'>
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img src="${watch.image}" alt="Placeholder image">
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                <p class="title is-4">${watch.name}</p>
+                <p class="subtitle is-6 has-text-primary-dark">${watch.price} Ft</p>
+              </div>
+            </div>
+        
+            <div class="content">
+              <ul>
+                  <li>
+                    <span>Type:</span>
+                    <span class="has-text-primary-dark">${watch.specifications.type}</span>
+                  </li>
+                  <li>
+                    <span>Strap material:</span>
+                    <span class="has-text-primary-dark">${watch.specifications['strap material']}</span>
+                  </li>
+                  <li>
+                    <span>Waterproof:</span>
+                    <span class="has-text-primary-dark">${watch.specifications.iswaterproof ? 'yes' : 'no'}</span>
+                  </li>
+                  <li>
+                    <span>Sex:</span>
+                    <span class="has-text-primary-dark">${watch.specifications.sex}</span>
+                  </li>
+              </ul>
+              <br>
+              <div class="level">
+                <div class="level-left" style="width: 50%;">
+                  <div class="level-item" style="width: 90%;">
+                    <input class="input is-rounded" id="amount_${watch.id}" max="9" min="0" placeholder="amount" type="number">
+                  </div>
+                </div>
+                <div class="level-right" style="width: 50%;">
+                  <div class="level-item" style="width: 90%;">
+                    <button id="${watch.id}" class="button is-rounded is-primary">Add to cart</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`);
+  });
+  addEventListenerToInput();
+  addEventListenerToAllAddToCartButton(data);
 }
 
 function cartDomManipulation (element) {
