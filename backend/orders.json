@@ -1,2 +1,1 @@
-{"orders":[
-]}
+{"orders":[{"id":1,"date":{"year":2023,"month":6,"day":2,"hour":11,"minute":24},"customer":{"name":"András","email":"andrastoth021@gmail.com","address":{"city":"asda","street":"asda"}}}]}

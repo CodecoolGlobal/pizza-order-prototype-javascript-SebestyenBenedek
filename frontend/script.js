@@ -1,46 +1,72 @@
-const checkedColorIDs = [];
-const checkedColorBoxes = document.querySelectorAll('.checkbox');
-console.log(checkedColorBoxes);
-const currentDate = new Date();
-
-
-function checkBox(datas) {
-  checkedColorBoxes.forEach((checkbox) => {
-    checkbox.addEventListener('change', function (event) {
-      if (!checkbox.classList.contains('checked')) {
-        checkbox.classList.add('checked');
-        const colorId = datas.find((data) => data.name === event.target.value);
-        checkedColorIDs.push(colorId.id);
-      } else if (checkbox.classList.contains('checked')) {
-        checkbox.classList.remove('checked');
-        const colorIndex = checkedColorIDs.findIndex((color) => color === event.target.value);
-        checkedColorIDs.splice(colorIndex, 1);
-      }
-      console.log(checkedColorIDs);
-    });
-  });
-}
-
-function watchFilteringByColor(data){
-  const filtered = [];
-  for (const colorID of checkedColorIDs) {
-    for (const watch of data){
-      if (watch.colors.includes(colorID) && !filtered.includes(watch)) filtered.push(watch);
-    }
-  }
-  console.log(filtered);
-  return filtered;
-}
+const CART = [];
+const CART_AMOUNT = [];
+const CHECKED_COLOR_IDS = [];
+const CHECKED_COLOR_BOXES = document.querySelectorAll('.checkbox');
+console.log(CHECKED_COLOR_BOXES);
+const CURRENT_DATE = new Date();
 
 async function main (){
   const watchJSON = await getWatchData();
-  watchesButtonEventListener(watchJSON);
+  displayWatchesAddEventListener(watchJSON);
   const colorJSON = await getColorData();
   checkBox(colorJSON);
   filterEventListener(watchJSON);
   addEventListenerToHomePageButton();
   displayCart();
 }
+
+function displayWatchesAddEventListener(data){
+  const watchButton = document.querySelector('#watches');
+
+  watchButton.addEventListener('click', ()=>{
+    displayWatches(data);
+  });
+}
+
+function checkBox(datas) {
+  CHECKED_COLOR_BOXES.forEach((checkbox) => {
+    checkbox.addEventListener('change', function (event) {
+      if (!checkbox.classList.contains('checked')) {
+        checkbox.classList.add('checked');
+        const colorId = datas.find((data) => data.name === event.target.value);
+        CHECKED_COLOR_IDS.push(colorId.id);
+      } else if (checkbox.classList.contains('checked')) {
+        checkbox.classList.remove('checked');
+        const colorIndex = CHECKED_COLOR_IDS.findIndex((color) => color === event.target.value);
+        CHECKED_COLOR_IDS.splice(colorIndex, 1);
+      }
+      console.log(CHECKED_COLOR_IDS);
+    });
+  });
+}
+
+function filterEventListener(data) {
+  const filterButton = document.querySelector('#filter');
+  filterButton.addEventListener('click', () => {
+    const filteredArr = watchFilteringByColor(data);
+    displayWatches(filteredArr);
+  });
+}
+
+function addEventListenerToHomePageButton() {
+  const homeButton = document.querySelector('.level-left');
+  const contentElement = document.querySelector('#content');
+
+  homeButton.addEventListener('click', function handleHomeButton() {
+    contentElement.innerHTML = '';
+  });
+}
+
+function displayCart() {
+  const cartButton = document.querySelector('#cart');
+  const contentElement = document.querySelector('#content');
+
+  cartButton.addEventListener('click', ()=>{
+    cartDomManipulation(contentElement);
+  });
+}
+
+/* ASYNCS */
 
 async function getWatchData(){
   const response = await fetch('http://127.0.0.1:9001/api/watches');
@@ -56,27 +82,43 @@ async function getColorData(){
   return jsonData;
 }
 
-function filterEventListener(data) {
-  const filterButton = document.querySelector('#filter');
-  filterButton.addEventListener('click', () => {
-    const filteredArr = watchFilteringByColor(data);
-    displayWatches(filteredArr);
-  });
+async function postRequestForOrder() {
+  const orderObject = {
+    id: 0,
+    date: {
+      year: CURRENT_DATE.getFullYear(),
+      month: (CURRENT_DATE.getMonth() + 1),
+      day: CURRENT_DATE.getDate(),
+      hour: CURRENT_DATE.getHours(),
+      minute: CURRENT_DATE.getMinutes(),
+    },
+    customer: {
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      address: {
+        city: document.getElementById('city').value,
+        street: document.getElementById('street').value,
+      },
+    },
+  };
+
+  try {
+    const response = await fetch('http://127.0.0.1:9001/api/order', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json; charset=UTF-8'},
+      body: JSON.stringify(orderObject),
+
+    });
+    displayThankYouMessage();
+    while (CART.length > 0) CART.pop();
+    while (CART_AMOUNT.length > 0) CART_AMOUNT.pop();
+    console.log('Completed!', response);
+  } catch (err) {
+    console.error(`Error: ${err}`);
+  }
 }
 
-function watchesButtonEventListener(data){
-  const watchButton = document.querySelector('#watches');
-
-  watchButton.addEventListener('click', ()=>{
-    displayWatches(data);
-  });
-
-}
-
-window.addEventListener('load', main);
-
-const CART = [];
-const CART_AMOUNT = [];
+/* ADDEVENTLISTENER FUNCTIONS */
 
 function addEventListenerToAllAddToCartButton(everyWatch) {
   const cartButton = document.querySelectorAll('button');
@@ -118,63 +160,8 @@ function addEventListenerToInput() {
 function addEventListenerToOrder(){
   const orderButton = document.querySelector('#post-btn');
 
-  orderButton.addEventListener('click', async () => {
-    //event.preventDefault();
-    const orderObject = {
-      id: 0,
-      date: {
-        year: currentDate.getFullYear(),
-        month: (currentDate.getMonth() + 1),
-        day: currentDate.getDate(),
-        hour: currentDate.getHours(),
-        minute: currentDate.getMinutes(),
-      },
-      customer: {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        address: {
-          city: document.getElementById('city').value,
-          street: document.getElementById('street').value,
-        },
-      },
-    };
-
-    try {
-      const response = await fetch('http://127.0.0.1:9001/api/order', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json; charset=UTF-8'},
-        body: JSON.stringify(orderObject),
-
-      });
-      //window.location.href = "http://127.0.0.1:9001/";
-      //document.getElementById('content').innerHTML = '<hr><h1>Thank you for your order!</h1><hr>';
-      displayThankYouMessage();
-      while (CART.length > 0) CART.pop();
-      while (CART_AMOUNT.length > 0) CART_AMOUNT.pop();
-      console.log('Completed!', response);
-    } catch (err) {
-      console.error(`Error: ${err}`);
-    }
-  });
+  orderButton.addEventListener('click', postRequestForOrder);
 }
-
-function totalCost(){
-  let sum = 0;
-  CART.map((watch) => {
-    sum += watch.amount * watch.price;
-  });
-  return sum;
-}
-
-function addEventListenerToHomePageButton() {
-  const homeButton = document.querySelector('.level-left');
-  const contentElement = document.querySelector('#content');
-
-  homeButton.addEventListener('click', function handleHomeButton() {
-    contentElement.innerHTML = '';
-  });
-}
-
 
 function addEventListenerToDeleteCartButton() {
   CART.forEach((product) => {
@@ -195,14 +182,29 @@ function addEventListenerToDeleteCartButton() {
   });
 }
 
-function displayCart() {
-  const cartButton = document.querySelector('#cart');
-  const contentElement = document.querySelector('#content');
+/* BASIC CALCULATIONS */
 
-  cartButton.addEventListener('click', ()=>{
-    cartDomManipulation(contentElement);
+function totalCost(){
+  let sum = 0;
+  CART.map((watch) => {
+    sum += watch.amount * watch.price;
   });
+  return sum;
 }
+
+function watchFilteringByColor(data){
+  const filtered = [];
+  for (const colorID of CHECKED_COLOR_IDS) {
+    for (const watch of data){
+      if (watch.colors.includes(colorID) && !filtered.includes(watch)) filtered.push(watch);
+    }
+  }
+  console.log(filtered);
+  return filtered;
+}
+
+
+/* DOM MANIPULATIONS */
 
 function displayWatches(data){
   const contentElement = document.querySelector('#content');
@@ -492,3 +494,5 @@ function displayThankYouMessage() {
   </div>
   `);
 }
+
+window.addEventListener('load', main);
