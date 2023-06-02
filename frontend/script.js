@@ -2,8 +2,9 @@ const CART = [];
 const CART_AMOUNT = [];
 const CHECKED_COLOR_IDS = [];
 const CHECKED_COLOR_BOXES = document.querySelectorAll('.checkbox');
-console.log(CHECKED_COLOR_BOXES);
+//console.log(CHECKED_COLOR_BOXES);
 const CURRENT_DATE = new Date();
+const MIN_AMOUNT = 1;
 
 async function main (){
   const watchJSON = await getWatchData();
@@ -35,7 +36,7 @@ function checkBox(datas) {
         const colorIndex = CHECKED_COLOR_IDS.findIndex((color) => color === event.target.value);
         CHECKED_COLOR_IDS.splice(colorIndex, 1);
       }
-      console.log(CHECKED_COLOR_IDS);
+      //console.log(CHECKED_COLOR_IDS);
     });
   });
 }
@@ -140,8 +141,8 @@ function addEventListenerToAllAddToCartButton(everyWatch) {
         }
       });
       //console.log(event.currentTarget.id);
-      console.log(CART);
-      console.log(CART_AMOUNT);
+      //console.log(CART);
+      //console.log(CART_AMOUNT);
     });
   });
   //console.log(CART);
@@ -152,7 +153,7 @@ function addEventListenerToInput() {
   const inputElement = document.querySelectorAll('input');
   inputElement.forEach((input) => {
     input.addEventListener('input', function handleInput(event) {
-      if (Number(event.target.value) < 1) event.target.value = null;
+      if (Number(event.target.value) < MIN_AMOUNT) event.target.value = null;
     });
   });
 }
@@ -199,7 +200,7 @@ function watchFilteringByColor(data){
       if (watch.colors.includes(colorID) && !filtered.includes(watch)) filtered.push(watch);
     }
   }
-  console.log(filtered);
+  //console.log(filtered);
   return filtered;
 }
 
