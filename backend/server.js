@@ -8,6 +8,14 @@ const orderFilePath = path.join(`${__dirname}/orders.json`);
 const cors = require('cors');
 const app = express();
 
+// app.use((req, res, next) => {
+//   req.artursProperty = "szia";
+//   if (req.headers['content-type'].startsWith("application/json")) {
+//     req.body = JSON.parse()
+//   }
+//   next();
+// })
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -27,6 +35,8 @@ function fileWriter(orders) {
 }
 
 app.get('/api/watches', async (req, res) => {
+  console.log(req.artursProperty);
+
   const fileData = JSON.parse(await fileReaderAsync(watchFilePath));
   const watches = fileData.watches;
 

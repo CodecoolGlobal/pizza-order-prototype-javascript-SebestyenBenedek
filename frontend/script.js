@@ -3,17 +3,16 @@ const CART_AMOUNT = [];
 const CHECKED_COLOR_IDS = [];
 const CHECKED_COLOR_BOXES = document.querySelectorAll('.checkbox');
 //console.log(CHECKED_COLOR_BOXES);
-const CURRENT_DATE = new Date();
 const MIN_AMOUNT = 1;
 
 async function main (){
-  const watchJSON = await getWatchData();
-  displayWatchesAddEventListener(watchJSON);
-  const colorJSON = await getColorData();
-  checkBox(colorJSON);
-  filterEventListener(watchJSON);
+  const watch = await getWatchData();
+  displayWatchesAddEventListener(watch);
+  const color = await getColorData();
+  checkBox(color);
+  filterEventListener(watch);
   addEventListenerToHomePageButton();
-  displayCart();
+  addCartClickListener();
 }
 
 function displayWatchesAddEventListener(data){
@@ -58,40 +57,42 @@ function addEventListenerToHomePageButton() {
   });
 }
 
-function displayCart() {
+function addCartClickListener() {
   const cartButton = document.querySelector('#cart');
   const contentElement = document.querySelector('#content');
 
   cartButton.addEventListener('click', ()=>{
-    cartDomManipulation(contentElement);
+    displayCart(contentElement);
   });
 }
 
 /* ASYNCS */
 
 async function getWatchData(){
-  const response = await fetch('http://127.0.0.1:9001/api/watches');
+  const response = await fetch('/api/watches');
   const jsonData = await response.json();
   /* console.log(jsonData); */
   return jsonData;
 }
 
 async function getColorData(){
-  const response = await fetch('http://127.0.0.1:9001/api/colors');
+  const response = await fetch('/api/colors');
   const jsonData = await response.json();
   /* console.log(jsonData); */
   return jsonData;
 }
 
-async function postRequestForOrder() {
+async function postRequestForOrder(event) {
+  event.preventDefault();
+  const currentDate = new Date();
   const orderObject = {
     id: 0,
     date: {
-      year: CURRENT_DATE.getFullYear(),
-      month: (CURRENT_DATE.getMonth() + 1),
-      day: CURRENT_DATE.getDate(),
-      hour: CURRENT_DATE.getHours(),
-      minute: CURRENT_DATE.getMinutes(),
+      year: currentDate.getFullYear(),
+      month: (currentDate.getMonth() + 1),
+      day: currentDate.getDate(),
+      hour: currentDate.getHours(),
+      minute: currentDate.getMinutes(),
     },
     customer: {
       name: document.getElementById('name').value,
@@ -104,15 +105,14 @@ async function postRequestForOrder() {
   };
 
   try {
-    const response = await fetch('http://127.0.0.1:9001/api/order', {
+    const response = await fetch('/api/order', {
       method: 'POST',
       headers: {'Content-Type': 'application/json; charset=UTF-8'},
       body: JSON.stringify(orderObject),
-
     });
     displayThankYouMessage();
-    while (CART.length > 0) CART.pop();
-    while (CART_AMOUNT.length > 0) CART_AMOUNT.pop();
+    CART.length = 0;
+    CART_AMOUNT.length = 0;
     console.log('Completed!', response);
   } catch (err) {
     console.error(`Error: ${err}`);
@@ -159,9 +159,9 @@ function addEventListenerToInput() {
 }
 
 function addEventListenerToOrder(){
-  const orderButton = document.querySelector('#post-btn');
+  const orderForm = document.querySelector('#my-information-form');
 
-  orderButton.addEventListener('click', postRequestForOrder);
+  orderForm.addEventListener('submit', postRequestForOrder);
 }
 
 function addEventListenerToDeleteCartButton() {
@@ -176,7 +176,7 @@ function addEventListenerToDeleteCartButton() {
       CART_AMOUNT.splice(index, 1);
 
       const contentElement = document.querySelector('#content');
-      cartDomManipulation(contentElement);
+      displayCart(contentElement);
       //UpdateTotalCost() needed
     });
 
@@ -269,7 +269,7 @@ function displayWatches(data){
   addEventListenerToAllAddToCartButton(data);
 }
 
-function cartDomManipulation (element) {
+function displayCart(element) {
   let cartItemsHTML = '';
   if (CART.length >= 1) {
     CART.forEach((item, i) => {
@@ -368,7 +368,7 @@ function cartDomManipulation (element) {
             
                 <div class="content">
               
-                  <div id="my-information-form">
+                  <form id="my-information-form">
 
                     <p class="menu-label">
                       Personal
@@ -458,7 +458,7 @@ function cartDomManipulation (element) {
                       </div>
                     </div>
 
-                  </div>
+                  </form>
 
                 </div>
               </div>
