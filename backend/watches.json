@@ -23,7 +23,7 @@
 				"sex": "men"
 			},
 			"price": "21.015,-",
-			"colors": [1, 2, 3, 4, 5],
+			"colors": [1, 4, 5],
 			"image": "./images/Casio MTP-1302PD-1A1VEF.jpg"
 		},
 		{
@@ -36,7 +36,7 @@
 				"sex": "men"
 								},
 			"price": "35.520,-",
-			"colors": [1, 2, 5, 6, 7],
+			"colors": [1],
 			"image": "./images/Casio GA-2100-1A1ER.jpg"
 		},
 		{
@@ -218,7 +218,7 @@
 				"sex": "men"
 								},
 			"price": "102.440,-",
-			"colors": [1, 4, 5, 7],
+			"colors": [1, 4, 5],
 			"image": "./images/Zeppelin 8680.jpg"
 		},
 		{
