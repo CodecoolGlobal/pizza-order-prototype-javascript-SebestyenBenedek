@@ -1,6 +1,6 @@
-# Stack-overflow project
+# Watch web-shop project
 
-This project is a webshop for watches, developed using JavaScript for both frontend and
+This project is a web-shop for watches, developed using JavaScript for both frontend and
 backend, DOM manipulations, and Bulma for design. The platform allows users to
 browse and order watches online, with features such as product selection and shopping
 carts.
@@ -51,6 +51,6 @@ If you'd like to contribute to the project, please follow these guidelines:
 
 List of the contributors to the project:
 
-<a href="https://github.com/SebestyenBenedek/pizza-order-prototype-javascript-SebestyenBenedek/graphs/contributors">
- <img src="https://contrib.rocks/image?repo=SebestyenBenedek/pizza-order-prototype-javascript-SebestyenBenedek" />
+<a href="https://github.com/CodecoolGlobal/pizza-order-prototype-javascript-SebestyenBenedek/graphs/contributors">
+ <img src="https://contrib.rocks/image?repo=CodecoolGlobal/pizza-order-prototype-javascript-SebestyenBenedek" />
 </a>
