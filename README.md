@@ -29,7 +29,7 @@ Clone the repository to your local machine.
 
 Navigate to the root directory of the project.
 
-Then build the Docker container using:
+Then build the Docker container using (Replace <image name> with your desired name):
 
     docker build -t <image name> .
 
