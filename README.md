@@ -16,11 +16,11 @@ carts.
 Before installing the project, make sure you have Docker installed on your machine.
 Docker can be downloaded and installed from the official Docker website. Here are the links to download Docker for different operating systems:
 
-Docker Desktop for Windows 1
+[Docker Desktop for Windows](https://docs.docker.com/desktop/install/windows-install/)
 
-Docker Desktop for Mac 2
+[Docker Desktop for Mac](https://docs.docker.com/desktop/install/mac-install/)
 
-Docker Desktop for Linux 3
+[Docker Desktop for Linux](https://docs.docker.com/desktop/install/linux-install/)
 
 
 After downloading and installing Docker, follow these steps to install and run the project:
